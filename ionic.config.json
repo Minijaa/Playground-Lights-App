@@ -1,0 +1,8 @@
+{
+  "name": "Playground-Lights-App",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
