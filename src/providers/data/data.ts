@@ -11,21 +11,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataProvider {
 
-  apiUrl = 'https://jsonplaceholder.typicode.com';
+  apiUrl = 'http://localhost:8080/'
+  //apiUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(public http: HttpClient) {
     console.log('Hello DataProvider Provider');
   }
-  // getUsers() {
-  //   return new Promise(resolve => {
-  //     this.http.get(this.apiUrl+'/users').subscribe(data => {
-  //       resolve(data);
-  //     }, err => {
-  //       console.log(err);
-  //     });
-  //   });
-  // }
-  getTest() {
-    return this.http.get('http://localhost:8080/object')// 'https://pvt.dsv.su.se/Group05/Hello'
+  getUsers() {
+    return new Promise(resolve => {
+      this.http.get(this.apiUrl).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      }, err => {
+        console.log(err);
+      });
+    });
   }
+  // getTest() {
+  //   return this.http.get('http://localhost:8080/')// 'https://pvt.dsv.su.se/Group05/Hello'
+  // }
 }

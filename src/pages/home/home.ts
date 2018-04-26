@@ -11,16 +11,16 @@ import {DataProvider} from '../../providers/data/data';
 export class HomePage {
   hello: any;
   constructor(public navCtrl: NavController, public dataProvider: DataProvider) {
-    this.hello = this.dataProvider.getTest();
+    //this.hello = this.dataProvider.getTest();
     //alert(this.hello.name);
     //console.log(this.hello);
-    //this.getUsers();//
+    this.getUser();
   }
-  // getUsers(){
-  //   this.dataProvider.getUsers()
-  //     .then(data => {
-  //       this.hello = data;
-  //       console.log(this.hello);
-  //     });
-  // }
+  getUser(){
+    this.dataProvider.getUsers()
+      .then(data => {
+        this.hello = data;
+        console.log(this.hello);
+      });
+  }
 }
