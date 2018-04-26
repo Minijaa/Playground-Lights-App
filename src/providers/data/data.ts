@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DataProvider {
 
-  apiUrl = 'http://localhost:8080/'
+  apiUrl = 'http://localhost:8080/list'
   //apiUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(public http: HttpClient) {
