@@ -13,6 +13,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {MapPage} from "../pages/map/map";
 import {GamesPage} from "../pages/games/games";
 import {CheckInPage} from "../pages/check-in/check-in";
+import {TabsPage} from "../pages/tabs/tabs";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {CheckInPage} from "../pages/check-in/check-in";
     ListPage,
     MapPage,
     GamesPage,
-    CheckInPage
+    CheckInPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import {CheckInPage} from "../pages/check-in/check-in";
     ListPage,
     MapPage,
     GamesPage,
-    CheckInPage
+    CheckInPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
