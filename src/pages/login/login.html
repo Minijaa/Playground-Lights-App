@@ -1,0 +1,30 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Logga in</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <!--Welcomes the user; else shows login-buttons-->
+
+  <ion-card *ngIf="userIsLoggedIn; else showLogin">
+    <ion-card-header>Välkommen {{ userData.first_name}}!</ion-card-header>
+    <img [src]="userData.picture">
+    <button ion-button full (click)="logoutFromFB()">Logga ut</button>
+  </ion-card>
+
+  <ng-template #showLogin>
+    <ion-card-header>Välkommen till vår app!<br>
+      Var vänlig att logga in: </ion-card-header>
+    <button ion-button full (click)="loginWithFB()">Logga in med Facebook</button>
+    <br>
+    <button ion-button full (click)="loginWithFB()">Logga in med annat konto</button>
+  </ng-template>
+</ion-content>

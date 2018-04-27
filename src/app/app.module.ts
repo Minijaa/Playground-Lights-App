@@ -13,7 +13,9 @@ import {HttpClientModule} from "@angular/common/http";
 import {MapPage} from "../pages/map/map";
 import {GamesPage} from "../pages/games/games";
 import {CheckInPage} from "../pages/check-in/check-in";
+import {LoginPage} from "../pages/login/login";
 import {TabsPage} from "../pages/tabs/tabs";
+import {Facebook} from '@ionic-native/facebook';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {TabsPage} from "../pages/tabs/tabs";
     MapPage,
     GamesPage,
     CheckInPage,
+    LoginPage,
     TabsPage
   ],
   imports: [
@@ -38,14 +41,16 @@ import {TabsPage} from "../pages/tabs/tabs";
     MapPage,
     GamesPage,
     CheckInPage,
-    TabsPage
+    TabsPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
-    HttpClientModule
+    HttpClientModule,
+    Facebook
   ]
 })
 export class AppModule {
