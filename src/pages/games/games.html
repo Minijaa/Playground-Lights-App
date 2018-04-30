@@ -13,9 +13,18 @@
 
 <ion-content padding>
   <ion-list inset>
-    <ion-item *ngFor="let games of games">
-      <h2>{{games.name}}</h2>
-      <h3>{{games.rules}}</h3>
+    <ion-item *ngFor="let game of games">
+      <!--<button ion-button>{{games.name}}</button>-->
+      <ion-buttons end>
+        <button ion-button block (click)="openGame(game)"  >
+          <ion-icon name="search"></ion-icon>
+          {{game.name}}
+        </button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
+
 </ion-content>
+
+<!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
+<!--</ion-content>-->

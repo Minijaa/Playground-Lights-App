@@ -12,6 +12,7 @@ import {DataProvider} from '../providers/data/data';
 import {HttpClientModule} from "@angular/common/http";
 import {MapPage} from "../pages/map/map";
 import {GamesPage} from "../pages/games/games";
+import {GameInfoPage} from "../pages/game-info/game-info";
 import {CheckInPage} from "../pages/check-in/check-in";
 import {LoginPage} from "../pages/login/login";
 import {TabsPage} from "../pages/tabs/tabs";
@@ -26,6 +27,7 @@ import {CoordinateHandler} from "../pages/map/CoordinateHandler";
     ListPage,
     MapPage,
     GamesPage,
+    GameInfoPage,
     CheckInPage,
     LoginPage,
     TabsPage
@@ -42,6 +44,7 @@ import {CoordinateHandler} from "../pages/map/CoordinateHandler";
     ListPage,
     MapPage,
     GamesPage,
+    GameInfoPage,
     CheckInPage,
     TabsPage,
     LoginPage
