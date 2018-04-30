@@ -128,7 +128,6 @@ export class CoordinateHandler {
         Dstar * Math.pow(Math.sin(phi_star), 6));
     lat_lon[0] = lat_radian * 180.0 / Math.PI;
     lat_lon[1] = lon_radian * 180.0 / Math.PI;
-    console.log(lat_lon);
     return lat_lon;
     //return {lat: lat_lon[0], lon: lat_lon[1]};
   }

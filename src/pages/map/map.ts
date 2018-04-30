@@ -38,6 +38,7 @@ export class MapPage {
     let mapOptions = {
       center: latLng,
       zoom: 15,
+      streetViewControl: false,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -52,13 +53,28 @@ export class MapPage {
   }
   populateMap() {
     for (var i = 0; i < this.playgrounds.length; i++){
-      var name = this.playgrounds[i].Name;
+      //var name = this.playgrounds[i].Name;
       var pos = this.coordHandler.gridToGeodetic(this.playgrounds[i].GeographicalPosition.X,this.playgrounds[i].GeographicalPosition.Y);
       //var position = new google.maps.LatLng(pos.lat, pos.lon);
       var position = new google.maps.LatLng(pos[0], pos[1]);
       var parkMarker = new google.maps.Marker({position:position, title:this.playgrounds[i].Name, map: this.map, id:i});
-      var content = "test hej" + name;
-      var infoWindow = new google.maps.InfoWindow;
+      var content = this.playgrounds[i].Name;
+      for(var j= 0; j < this.playgrounds[i].Attributes.length; j++){
+        if(this.playgrounds[i].Attributes[j].Id == "Image"){
+          content = content + "<br><br><img src='http://api.stockholm.se/ServiceGuideService/ImageFiles/" + this.playgrounds[i].Attributes[j].Value.Id + "/Data?apikey=71b5f56a324145ceafe0cf289e249316'></img>";
+          console.log(content);
+        }
+        if(this.playgrounds[i].Attributes[j].Id == "ShortDescription"){
+          content = content + "<br><br>" + this.playgrounds[i].Attributes[j].Value;
+          console.log("HEJJEHEHEHE"+ this.playgrounds[i].Attributes[j].Value)
+          console.log(content);
+        }
+      }
+      console.log(i);
+      console.log(this.playgrounds[i].Attributes.length);
+      console.log(this.playgrounds[i].Attributes);
+      //content = this.playgrounds[i].Name + "/n/n";
+      var infoWindow = new google.maps.InfoWindow({maxWidth: 200});
 
       google.maps.event.addListener(parkMarker, "click", (function(parkMarker, content, infoWindow) {
         return function () {
