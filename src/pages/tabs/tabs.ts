@@ -4,6 +4,7 @@ import {MapPage} from "../map/map";
 import {GamesPage} from "../games/games";
 import {CheckInPage} from "../check-in/check-in";
 
+
 /**
  * Generated class for the TabsPage page.
  *

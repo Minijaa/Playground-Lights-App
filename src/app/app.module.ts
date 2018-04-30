@@ -16,6 +16,8 @@ import {CheckInPage} from "../pages/check-in/check-in";
 import {LoginPage} from "../pages/login/login";
 import {TabsPage} from "../pages/tabs/tabs";
 import {Facebook} from '@ionic-native/facebook';
+import {MapProvider} from "../providers/map/map";
+import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 
 @NgModule({
   declarations: [
@@ -49,8 +51,10 @@ import {Facebook} from '@ionic-native/facebook';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DataProvider,
+    MapProvider,
     HttpClientModule,
-    Facebook
+    Facebook,
+    CoordinateHandler
   ]
 })
 export class AppModule {

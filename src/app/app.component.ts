@@ -3,11 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import {CheckInPage} from "../pages/check-in/check-in";
-import {MapPage} from "../pages/map/map";
-import {GamesPage} from "../pages/games/games";
 import {LoginPage} from "../pages/login/login";
 import {TabsPage} from "../pages/tabs/tabs";
 
@@ -29,11 +24,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Logga in', component: LoginPage},
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Map', component: MapPage },
-      { title: 'Games', component: GamesPage },
-      { title: 'CheckIn', component: CheckInPage }
+      { title: "Tabs", component: TabsPage}
     ];
 
   }
