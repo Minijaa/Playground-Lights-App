@@ -11,16 +11,15 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="page-games">
   <ion-list inset>
     <ion-item *ngFor="let game of games">
-      <!--<button ion-button>{{games.name}}</button>-->
-      <ion-buttons end>
-        <button ion-button block (click)="openGame(game)"  >
-          <ion-icon name="search"></ion-icon>
-          {{game.name}}
-        </button>
-      </ion-buttons>
+
+      <ion-card (click)="openGame(game)">
+         <img src="../../assets/imgs/default.jpg"/> <!--detta borde vara {{games.img}} eller liknande, som då har en från api't, men får det inte riktigt att funka-->
+          <div class="card-title">{{game.name}}</div>
+         <div class="card-subtitle">kanske mer info här?</div>
+      </ion-card>
     </ion-item>
   </ion-list>
 
