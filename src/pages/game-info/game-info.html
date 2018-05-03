@@ -14,16 +14,16 @@
 
 
 <ion-content padding>
-  <!--<round-progress [current]="0" [max]="10"></round-progress>-->
-
 
   <h3>{{game.rules}}</h3>
-  <h2>{{countdown}}</h2>
+
 
   <div align="center">
+    <div class="current" [ngStyle]="getOverlayStyle()">{{ current }}/{{ max }}</div>
     <round-progress [current]="countdown" [max]="countdownMax" [stroke]="pbStroke" [radius]="pbRadius" [semicircle]="semicircle" [rounded]="rounded"
                     [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color" [background]="background"
                     [duration]="duration" [animation]="animation" [animationDelay]="animationDelay"></round-progress>
+    <div class="progress-text">{{countdown}}</div>
   </div>
 
 </ion-content>
