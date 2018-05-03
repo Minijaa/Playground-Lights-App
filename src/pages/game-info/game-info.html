@@ -7,12 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>gameInfo</ion-title>
+    <ion-title>{{game.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <h3>{{game.name}}{{game.rules}}</h3>
+  <!--<round-progress [current]="0" [max]="10"></round-progress>-->
+
+
+  <h3>{{game.rules}}</h3>
+  <h2>{{countdown}}</h2>
+
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+    <button ion-button (click)="StartTimer()"  full>Start</button>
+  </ion-toolbar>
+</ion-footer>
