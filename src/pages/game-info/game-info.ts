@@ -9,9 +9,6 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar'
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@NgModule({
-  imports: [RoundProgressModule]
-})
 @IonicPage()
 @Component({
   selector: 'page-game-info',

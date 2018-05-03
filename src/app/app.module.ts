@@ -19,6 +19,7 @@ import {TabsPage} from "../pages/tabs/tabs";
 import {Facebook} from '@ionic-native/facebook';
 import {MapProvider} from "../providers/map/map";
 import {CoordinateHandler} from "../pages/map/CoordinateHandler";
+import {RoundProgressModule} from "angular-svg-round-progressbar";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {CoordinateHandler} from "../pages/map/CoordinateHandler";
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

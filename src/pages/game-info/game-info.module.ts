@@ -1,6 +1,7 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { GameInfoPage } from './game-info';
+import {RoundProgressConfig, RoundProgressModule} from 'angular-svg-round-progressbar';
 
 @NgModule({
   declarations: [
@@ -8,6 +9,15 @@ import { GameInfoPage } from './game-info';
   ],
   imports: [
     IonicPageModule.forChild(GameInfoPage),
+    RoundProgressModule
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class GameInfoPageModule {}
+export class GameInfoPageModule {
+  constructor(private _config: RoundProgressConfig){
+    _config.setDefaults({
+      color: '#f00',
+      background: '#0f0'
+    });
+  }
+}
