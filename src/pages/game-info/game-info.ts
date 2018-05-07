@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {NgModule} from '@angular/core';
 import {RoundProgressModule} from 'angular-svg-round-progressbar'
+import {GameProvider} from "../../providers/game/game";
 
 /**
  * Generated class for the GameInfoPage page.
@@ -13,6 +14,7 @@ import {RoundProgressModule} from 'angular-svg-round-progressbar'
 @Component({
   selector: 'page-game-info',
   templateUrl: 'game-info.html',
+  providers: [GameProvider]
 })
 export class GameInfoPage {
   //progress bar test things
@@ -30,15 +32,16 @@ export class GameInfoPage {
   animations: string[] = [];
   gradient: boolean = false;
   realCurrent: number = 0;
-  rate:number;
+  rate: number;
   //end progress bar test things
 
   timer: any;
   game: any;
-  countdown: number=10.0;
-  countdownMax: number=10.0; //this is for the progressbar
+  countdown: number = 10.0;
+  countdownMax: number = 10.0; //this is for the progressbar
+  firstRun: boolean = true;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
     this.game = navParams.get('game')
   }
 
@@ -46,22 +49,26 @@ export class GameInfoPage {
     console.log('ionViewDidLoad GameInfoPage');
   }
 
-  setContent(game: any){
+  setContent(game: any) {
     this.game = game;
   }
 
-  startGame(){
+  startGame() {
 
   }
 
   StartTimer() {
+
+    if (this.firstRun) {
+      this.gameProvider.startGame();
+      this.firstRun = false;
+    }
+
+
     this.timer = setTimeout(x => {
       // if (this.countdown <= 0) {
       // }
-      if (this.countdown <= 0){
-        this.countdown = 10.0;
-        this.getLogic();
-      }
+
 
       this.countdown -= 0.1;
 
@@ -72,11 +79,10 @@ export class GameInfoPage {
 
 
     }, 100);
-
   }
 
 
-  getLogic(){
+  getLogic() {
 
     //här får vi trycka in något från Samuels logik
     //game.logic
