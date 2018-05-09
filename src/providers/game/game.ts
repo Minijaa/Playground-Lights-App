@@ -14,7 +14,8 @@ import 'rxjs/add/operator/map';
 export class GameProvider {
 
   apiUrl = 'http://localhost:8080/games'
-  startURL = 'http://localhost:8080/game?type=runhere'
+  startURL = 'http://localhost:8080/game?type='
+  stopURL = 'http://localhost:8080/stopgames'
 
   constructor(public http: HttpClient) {
     console.log('Hello GameProvider Provider');
@@ -31,10 +32,16 @@ export class GameProvider {
     });
   }
 
-  startGame(){
-    console.log("Game runhere Started");
+  startGame(gameName){
+    console.log("Game " + gameName + " is Started");
     //var request: string = this.apiUrl + gameName;
-    fetch(this.startURL);
+    fetch(this.startURL + gameName);
+  }
+
+  stopGame(gameName){
+    console.log("Game " + gameName + " is Stopped");
+    fetch(this.stopURL);
   }
 
 }
+

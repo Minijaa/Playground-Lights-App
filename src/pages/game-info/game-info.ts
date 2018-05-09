@@ -19,12 +19,12 @@ import {GameProvider} from "../../providers/game/game";
 export class GameInfoPage {
   //progress bar test things
   pbStroke: number = 15;
-  pbRadius: number = 75;
+  pbRadius: number = 110;
   semicircle: boolean = false;
   rounded: boolean = false;
   responsive: boolean = false;
   clockwise: boolean = false;
-  color: string = '#45ccce';
+  color: string = '#488aff';//'#45ccce';
   background: string = '#eaeaea';
   duration: number = 800;
   animation: string = 'easeOutCubic';
@@ -37,9 +37,11 @@ export class GameInfoPage {
 
   timer: any;
   game: any;
-  countdown: number = 10.0;
-  countdownMax: number = 10.0; //this is for the progressbar
+  countdown: number = 10;
+  countdownMax: number = 10; //this is for the progressbar
   firstRun: boolean = true;
+  gameStopped: boolean = false;
+  showToggle: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
     this.game = navParams.get('game')
@@ -53,39 +55,52 @@ export class GameInfoPage {
     this.game = game;
   }
 
-  startGame() {
-
+  toggleStartStop() {
+    if (this.showToggle == true) {
+      this.showToggle = false;
+    } else {
+      this.showToggle = true;
+    }
   }
 
-  StartTimer() {
+  getCountDown() {
+    if (this.countdown > 0) {
+      return this.countdown;
+    } else {
+      return "Go!";
+    }
+  }
 
+  resetTimer() {
+    this.countdown = 10;
+    this.gameStopped = true;
+    this.gameProvider.stopGame(this.game.name);
+  }
+
+  startTimer() {
     if (this.firstRun) {
-      this.gameProvider.startGame();
+      this.gameProvider.startGame(this.game.name);
       this.firstRun = false;
+      this.gameStopped = false;
+
+    } else if (this.gameStopped) {
+      this.gameStopped = false;
+      this.countdown = 10;
+      this.firstRun = true;
+      return;
     }
 
-
     this.timer = setTimeout(x => {
-      // if (this.countdown <= 0) {
-      // }
 
-
-      this.countdown -= 0.1;
+      this.countdown -= 1;
 
       if (this.countdown > 0) {
-        this.StartTimer();
+        this.startTimer();
+      } else {
+
+        this.firstRun = true;
       }
-
-
-
-    }, 100);
-  }
-
-
-  getLogic() {
-
-    //här får vi trycka in något från Samuels logik
-    //game.logic
+    }, 1000);
 
   }
 
@@ -100,9 +115,7 @@ export class GameInfoPage {
       'transform': transform,
       '-moz-transform': transform,
       '-webkit-transform': transform,
-      'font-size': this.pbRadius / 3.5 + 'px'
+      'font-size': this.pbRadius / 2.5 + 'px'
     };
   }
-
-
 }

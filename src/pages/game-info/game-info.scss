@@ -6,9 +6,22 @@ page-game-info {
   }
 
   .current {
-    position: absolute;
-    color: #bbb;
+    position: fixed;
+    color: black;// #bbb;
     font-weight: 100;
     line-height: 1;
+
   }
+
+  .scroll-content {
+    overflow-y: hidden;
+  }
+
+  .rules{
+    text-align: justify;
+    text-justify: inter-word;
+    font-size: 16px;
+  }
+
+
 }

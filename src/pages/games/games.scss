@@ -30,6 +30,12 @@ page-games {
   .my-card.card{
     overflow: visible;
   }
+  .label {
+    margin: 0;
+  }
 
+  .scroll-content {
+    overflow-y: hidden;
+  }
 
 }
