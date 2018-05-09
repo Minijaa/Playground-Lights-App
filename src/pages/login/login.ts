@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
+import {Md5} from "ts-md5";
 
 @IonicPage()
 @Component({
@@ -11,6 +12,7 @@ export class LoginPage {
 
   userData = null;
   userIsLoggedIn = false;
+  hash = Md5.hashStr("password");
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fb: Facebook) {
     fb.getLoginStatus()
