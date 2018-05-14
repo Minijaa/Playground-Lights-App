@@ -23,3 +23,6 @@ export class CheckInPage {
   }
 
 }
+
+
+// hej
