@@ -20,6 +20,7 @@ import {Facebook} from '@ionic-native/facebook';
 import {MapProvider} from "../providers/map/map";
 import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 import {RoundProgressModule} from "angular-svg-round-progressbar";
+import {MapModalPage} from "../pages/map/map-modal";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {RoundProgressModule} from "angular-svg-round-progressbar";
     GameInfoPage,
     CheckInPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+    MapModalPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import {RoundProgressModule} from "angular-svg-round-progressbar";
     GameInfoPage,
     CheckInPage,
     TabsPage,
-    LoginPage
+    LoginPage,
+    MapModalPage
   ],
   providers: [
     StatusBar,

@@ -17,11 +17,25 @@
 
 
 <ion-content>
-  <ion-list inset>
-    <!--<ion-item *ngFor="let playgrounds of playgrounds">
+<!--  <ion-list inset>
+    &lt;!&ndash;<ion-item *ngFor="let playgrounds of playgrounds">
       <h2>{{playgrounds.data}}</h2>
-    </ion-item>-->
-  </ion-list>
+    </ion-item>&ndash;&gt;
+  </ion-list>-->
+  <ion-searchbar id="search"></ion-searchbar>
   <div ion-fixed #map id="map"></div>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<!--  <ion-card id="contentBox">
+    <ion-card-header>-->
+      {{openPlayground.name}}
+<!--    </ion-card-header>
+
+    <ion-card-content>-->
+
+      <div id="text">{{openPlayground.content}}</div>
+      <button ion-button icon-only (click)="openModal({test: openPlayground})"><ion-icon name="add-circle"></ion-icon></button>
+      <ion-img id="image" src="{{openPlayground.image}}"></ion-img>
+<!--    </ion-card-content>
+    </ion-card>-->
 
 </ion-content>
