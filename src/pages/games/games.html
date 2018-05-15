@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content class="page-games" >
+<ion-content class="page-games">
 
   <ion-card *ngFor="let game of games" (click)="openGame(game)">
     <!--<img src="../../assets/imgs/defaultmix.jpg"/>-->
@@ -22,15 +22,16 @@
 
   <!--Kommenterade bort koden nedan då layouten var lättare att få till om man inte körde med en lista.-->
 
-  <!--<ion-list no-lines>-->
-  <!--<ion-item *ngFor="let game of games">-->
-  <!--<ion-card (click)="openGame(game)">-->
-  <!--<img src="../../assets/imgs/defaultmix.jpg"/> &lt;!&ndash;detta borde vara {{games.img}} eller liknande, som då har en från api't, men får det inte riktigt att funka&ndash;&gt;-->
-  <!--<div class="card-title">{{game.name}}</div>-->
-  <!--<div class="card-subtitle">kanske mer info här?</div>-->
-  <!--</ion-card>-->
-  <!--</ion-item>-->
-  <!--</ion-list>-->
+  <ion-list no-lines>
+    <ion-item *ngFor="let game of games">
+      <ion-card (click)="openGame(game)">
+        <img src="../../assets/imgs/defaultmix.jpg"/>
+        <!--detta borde vara {{games.img}} eller liknande, som då har en från api't, men får det inte riktigt att funka-->
+        <div class="card-title">{{game.name}}</div>
+        <div class="card-subtitle">kanske mer info här?</div>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 </ion-content>
 <!--<button ion-button secondary menuToggle>Toggle Menu</button>-->
 <!--</ion-content>-->

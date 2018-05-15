@@ -3,6 +3,8 @@ import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {NgModule} from '@angular/core';
 import {RoundProgressModule} from 'angular-svg-round-progressbar'
 import {GameProvider} from "../../providers/game/game";
+import {BaseInput} from "ionic-angular/util/base-input";
+import {T} from "@angular/core/src/render3";
 
 /**
  * Generated class for the GameInfoPage page.
@@ -19,12 +21,12 @@ import {GameProvider} from "../../providers/game/game";
 export class GameInfoPage {
   //progress bar test things
   pbStroke: number = 15;
-  pbRadius: number = 110;
+  pbRadius: number = 90;
   semicircle: boolean = false;
   rounded: boolean = false;
   responsive: boolean = false;
   clockwise: boolean = false;
-  color: string = '#488aff';//'#45ccce';
+  color: string = '#696969'//'#488aff';//'#45ccce';
   background: string = '#eaeaea';
   duration: number = 800;
   animation: string = 'easeOutCubic';
@@ -42,9 +44,11 @@ export class GameInfoPage {
   firstRun: boolean = true;
   gameStopped: boolean = false;
   showToggle: boolean = true;
+  difficulty: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
     this.game = navParams.get('game')
+    this.difficulty = "easy";
   }
 
   ionViewDidLoad() {
@@ -117,5 +121,10 @@ export class GameInfoPage {
       '-webkit-transform': transform,
       'font-size': this.pbRadius / 2.5 + 'px'
     };
+  }
+
+  difficultyChanged(difficulty) {
+    // kör en funktion och skicka med difficultyn som argument
+    console.log(this.difficulty);
   }
 }

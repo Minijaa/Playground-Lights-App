@@ -17,6 +17,11 @@ export class GameProvider {
   startURL = 'http://localhost:8080/game?type='
   stopURL = 'http://localhost:8080/stopgames'
 
+  // apiUrl = 'http://192.168.0.17:8080/games'
+  // startURL = 'http://192.168.0.17:8080/game?type='
+  // stopURL = 'http://192.168.0.17:8080/stopgames'
+
+
   constructor(public http: HttpClient) {
     console.log('Hello GameProvider Provider');
   }
