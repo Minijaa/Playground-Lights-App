@@ -123,8 +123,8 @@ export class GameInfoPage {
     };
   }
 
-  difficultyChanged(difficulty) {
-    // kör en funktion och skicka med difficultyn som argument
+  difficultyChanged() {
+    this.gameProvider.setDifficulty(this.difficulty);
     console.log(this.difficulty);
   }
 }

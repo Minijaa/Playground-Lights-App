@@ -13,9 +13,11 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class GameProvider {
 
-  apiUrl = 'http://localhost:8080/games'
-  startURL = 'http://localhost:8080/game?type='
-  stopURL = 'http://localhost:8080/stopgames'
+  apiUrl = 'http://localhost:8080/games';
+  startURL = 'http://localhost:8080/game?type=';
+  stopURL = 'http://localhost:8080/stopgames';
+  setActiveURL = 'http://localhost:8080/setactive?gamename=';
+  setDifficultyURL = 'http://localhost:8080/difficulty?level=';
 
   // apiUrl = 'http://192.168.0.17:8080/games'
   // startURL = 'http://192.168.0.17:8080/game?type='
@@ -46,6 +48,15 @@ export class GameProvider {
   stopGame(gameName){
     console.log("Game " + gameName + " is Stopped");
     fetch(this.stopURL);
+  }
+
+  setActive(gameName){
+    console.log("Game " + gameName + " is Active");
+    fetch(this.setActiveURL + gameName);
+  }
+  setDifficulty(difficulty){
+    console.log("Difficulty " + difficulty + " is set");
+    fetch(this.setDifficultyURL + difficulty);
   }
 
 }
