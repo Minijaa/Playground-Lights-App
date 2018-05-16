@@ -21,6 +21,9 @@ import {MapProvider} from "../providers/map/map";
 import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 import {RoundProgressModule} from "angular-svg-round-progressbar";
 import {MapModalPage} from "../pages/map/map-modal";
+import {FriendRequestPage} from "../pages/friend-request/friend-request";
+import {AddFriendPage} from "../pages/add-friend/add-friend";
+
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import {MapModalPage} from "../pages/map/map-modal";
     CheckInPage,
     LoginPage,
     TabsPage,
-    MapModalPage
+    MapModalPage,
+    FriendRequestPage,
+    AddFriendPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +57,9 @@ import {MapModalPage} from "../pages/map/map-modal";
     CheckInPage,
     TabsPage,
     LoginPage,
-    MapModalPage
+    MapModalPage,
+    AddFriendPage,
+    FriendRequestPage
   ],
   providers: [
     StatusBar,
