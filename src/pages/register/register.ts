@@ -22,7 +22,7 @@ export class RegisterPage {
 
   private username: string;
   private password: string;
-  private email: string;
+  private mail: string;
   response: any;
   responseString: any;
 
@@ -34,7 +34,7 @@ export class RegisterPage {
   }
 
   createAcc(){
-    this.accProvider.createAcc(this.username, this.email, this.password, )
+    this.accProvider.createAcc(this.username, this.mail, this.password, )
       .then(data => {
         this.responseString = JSON.stringify(data);
         this.response = JSON.parse(this.responseString);

@@ -17,7 +17,12 @@
     <ion-list inset>
       <ion-item>
         <ion-icon start name="contact"></ion-icon>
-        <ion-input placeholder="Namn" name="username" id="loginField" type="text" required [(ngModel)]="username" #email></ion-input>
+        <ion-input placeholder="Namn" name="username" id="loginField" type="text" required [(ngModel)]="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="contact"></ion-icon>
+        <ion-input placeholder="Epost adress" name="email" id="emailField" type="text" required [(ngModel)]="mail" #email></ion-input>
       </ion-item>
 
       <ion-item>
