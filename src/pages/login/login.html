@@ -37,7 +37,7 @@
           <ion-list inset>
             <ion-item>
               <ion-icon start name="contact"></ion-icon>
-              <ion-input placeholder="Användarnamn" name="username" id="loginField" type="text" required [(ngModel)]="username" #email></ion-input>
+              <ion-input placeholder="Användarnamn" name="username" id="loginField" type="username" required [(ngModel)]="username" #email></ion-input>
 
             </ion-item>
             <ion-item>
@@ -56,7 +56,7 @@
       </ion-row>-->
       <ion-row>
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid">Logga in</button>
+          <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" (click)="login()">Logga in</button>
       </ion-row>
 
         <ion-title>eller</ion-title>
