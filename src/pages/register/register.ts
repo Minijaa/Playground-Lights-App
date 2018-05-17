@@ -34,7 +34,8 @@ export class RegisterPage {
   }
 
   createAcc(){
-    this.accProvider.createAcc(this.username, this.mail, this.password, )
+    var hash = Md5.hashStr(this.password);
+    this.accProvider.createAcc(this.username, this.mail, hash, )
       .then(data => {
         this.responseString = JSON.stringify(data);
         this.response = JSON.parse(this.responseString);

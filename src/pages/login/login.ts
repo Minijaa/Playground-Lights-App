@@ -73,7 +73,8 @@ export class LoginPage {
   }
 
   login(){
-    this.accProvider.login(this.username, this.password)
+    var hash = Md5.hashStr(this.password);
+    this.accProvider.login(this.username, hash)
       .then(data => {
         //this.response = data;
         this.responseString = JSON.stringify(data);
