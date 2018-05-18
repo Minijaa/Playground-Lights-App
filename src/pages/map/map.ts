@@ -140,6 +140,7 @@ export class MapPage {
     }
   }*/
   openModal(parkId) {
+    console.log("parkId")
     this.navCtrl.push(MapModalPage, parkId);
 
    // modal.onDidDismiss(() => this.ionViewDidLoad());
