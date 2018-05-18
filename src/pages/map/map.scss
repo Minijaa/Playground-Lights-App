@@ -1,6 +1,6 @@
 page-map {
   #search {
-    position: absolute;
+    position: relative;
     z-index: 4;
   }
   #map {
@@ -9,6 +9,16 @@ page-map {
     width: 100%;
     height: 100%;
     z-index: 0;
+  }
+  #searchList{
+    position: absolute;
+    z-index: 4;
+    max-height: 305px;
+    overflow-y: scroll;
+  }
+
+  #searchItem{
+   opacity: 0.9;
   }
   .contentBox {
     position: relative;

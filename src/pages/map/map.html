@@ -22,7 +22,17 @@
       <h2>{{playgrounds.data}}</h2>
     </ion-item>&ndash;&gt;
   </ion-list>-->
-  <ion-searchbar id="search"></ion-searchbar>
+  <ion-searchbar id="search"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="getSearchItems($event)">
+  </ion-searchbar>
+
+  <ion-list id ="searchList">
+    <ion-item *ngFor="let parkName of searchedParks" (click)="centerSearchedPark(parkName)" id="searchItem">
+      {{parkName}}
+    </ion-item>
+  </ion-list>
+
   <div #map id="map">
 
   </div>

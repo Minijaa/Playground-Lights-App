@@ -1,12 +1,14 @@
-import {Component, ElementRef, ViewChild, NgZone } from '@angular/core';
+import {Component, ElementRef, ViewChild, NgZone} from '@angular/core';
 import {IonicPage, NavController, NavParams, Events, ModalController} from 'ionic-angular';
 import {MapProvider} from "../../providers/map/map";
 import {CoordinateHandler} from "./CoordinateHandler";
-import { DomSanitizer } from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {Map} from "rxjs/util/Map";
 import {MapModalPage} from "./map-modal";
 import {VisitorProvider} from "../../providers/visitor/visitor";
+
 declare var google;
+
 
 /**
  * Generated class for the MapPage page.
@@ -30,8 +32,36 @@ export class MapPage {
   pGrounds: Array<any> = [];
   public openPlayground: any = new Park(this.visitorProvider);
   infoBoxOpened: boolean = false;
+  searchQuery: string = '';
+  searchedParks: string[] = [];
+  allParkNames: string[] = [];
 
+  // Uppdaterar array över sökträffar
+  getSearchItems(ev: any) {
+    this.searchedParks.length = 0;
+    console.log("getSearch");
 
+    let val = ev.target.value;
+
+    if (val && val.trim() != '') {
+      this.searchedParks = this.allParkNames.filter((item) => {
+        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      })
+    }
+  }
+  //Centrerar den valda parken ur sökresultaten på kartan
+  centerSearchedPark(parkName: string) {
+    let chosenPark: any;
+    for (let i = 0; i < this.pGrounds.length; i++) {
+      if (this.pGrounds[i].name === parkName) {
+        chosenPark = this.pGrounds[i];
+      }
+    }
+    this.searchedParks = [];
+    this.map.setCenter(chosenPark.position)
+    chosenPark.setActive();
+
+  }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mapProvider: MapProvider, public coordHandler: CoordinateHandler, public events: Events,
               private zone: NgZone, public modalCtrl: ModalController, public visitorProvider: VisitorProvider) {
@@ -49,16 +79,16 @@ export class MapPage {
     var page = this;
     console.log('ionViewDidLoad MapPage');
     this.loadMap();
-    setInterval(function() {
-      page.updateIcons()
-    }, 60000
+    setInterval(function () {
+        page.updateIcons()
+      }, 60000
     )
 
 
   }
 
-  updateIcons(){
-    for (var i = 0; i < this.pGrounds.length; i++){
+  updateIcons() {
+    for (var i = 0; i < this.pGrounds.length; i++) {
       this.pGrounds[i].getVisitor();
     }
 
@@ -77,14 +107,14 @@ export class MapPage {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
   }
 
-  openInfoBox(){
+  openInfoBox() {
     document.getElementById('textBox').hidden = false;
     document.getElementById('map').style.height = "70%";
     this.infoBoxOpened = true;
   }
 
-  refreshData(){
-    if(!this.infoBoxOpened) {
+  refreshData() {
+    if (!this.infoBoxOpened) {
       this.openInfoBox();
     }
     this.events.publish('updateScreen');
@@ -96,9 +126,10 @@ export class MapPage {
         this.playgrounds = data;
         console.log(this.playgrounds)
         this.createParks();
-       /* this.populateMap();*/
+        /* this.populateMap();*/
       });
   }
+
   createParks() {
     for (var i = 0/*272*/; i < /*300*/this.playgrounds.length; i++) {
       let park = new Park(this.visitorProvider)
@@ -131,35 +162,42 @@ export class MapPage {
       }
       this.pGrounds.push(park)
     }
+    for (let i = 0; i < this.pGrounds.length; i++) {
+      this.allParkNames.push(this.pGrounds[i].name);
+      console.log("hej");
+    }
   }
 
 
-/*  populateMap(){
-    for(var i = 0;i < this.pGrounds.length; i++) {
-        console.log(this.pGrounds[i])
-    }
-  }*/
+  /*  populateMap(){
+      for(var i = 0;i < this.pGrounds.length; i++) {
+          console.log(this.pGrounds[i])
+      }
+    }*/
   openModal(parkId) {
     console.log("parkId")
     this.navCtrl.push(MapModalPage, parkId);
 
-   // modal.onDidDismiss(() => this.ionViewDidLoad());
+    // modal.onDidDismiss(() => this.ionViewDidLoad());
   }
+
 }
-class Park{
+
+class Park {
   constructor(public visitorProvider: VisitorProvider) {
   }
-  readonly markerBlue :string = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-  readonly markerRed :string = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
-  readonly markerYellow :string = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
-  readonly markerGreen :string = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
 
-  name: string ="Tryck på en lekplats!";
-  content: string ="Det finns ingen information om denna lekplats.";
+  readonly markerBlue: string = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+  readonly markerRed: string = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
+  readonly markerYellow: string = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+  readonly markerGreen: string = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
+
+  name: string = "Tryck på en lekplats!";
+  content: string = "Det finns ingen information om denna lekplats.";
   position: any;
   parkMarker: any;
   id: any;
-  page : any;
+  page: any;
   image: any;
   visitors: any;
   onMap: boolean = false;
@@ -168,27 +206,27 @@ class Park{
   postal: any;
   imgHidden: boolean = true;
 
-  getPinIcon(){
-    if(this.visitors < 33){
+  getPinIcon() {
+    if (this.visitors < 33) {
       return this.markerGreen
-    } else if (this.visitors >= 33 && this.visitors < 65){
+    } else if (this.visitors >= 33 && this.visitors < 65) {
       return this.markerYellow
-    } else if (this.visitors >= 65){
+    } else if (this.visitors >= 65) {
       return this.markerRed
     } else {
       return this.markerBlue
     }
   }
 
-  getVisitor(){
-   this.visitorProvider.getVisitors(this.id)
-     .then(data => {
-       this.visitors = data;
-       this.putOnMap()
-     });
+  getVisitor() {
+    this.visitorProvider.getVisitors(this.id)
+      .then(data => {
+        this.visitors = data;
+        this.putOnMap()
+      });
   }
 
-  setActive(){
+  setActive() {
     this.page.openPlayground = this;
     this.parkMarker.setMap(this.page.map)
     console.log("going to refresh")
@@ -196,7 +234,7 @@ class Park{
     console.log("ended")
   }
 
-  putOnMap(){
+  putOnMap() {
     this.parkMarker = new google.maps.Marker({
       position: this.position,
       title: this.name,
