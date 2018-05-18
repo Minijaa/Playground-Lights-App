@@ -13,28 +13,62 @@
 
 <ion-content padding>
   <h4>Lekregler:</h4>
-  <div class = "rules">
-  {{game.rules}}</div>
+  <div class="rules">
+    {{game.rules}}
+  </div>
   <br>
 
-  <div align="center">
+  <!--<div align="center">-->
 
-    <div class="current" [ngStyle]="getOverlayStyle()"><br><br>{{getCountDown()}}
+  <!--<div class="startandstop">-->
+  <!--<button ion-button large full round color="primary" (click)="startTimer(); toggleStartStop()" *ngIf="showToggle">-->
+  <!--Start-->
+  <!--</button>-->
+  <!--<button ion-button large full round color="danger" (click)="resetTimer(); toggleStartStop()" *ngIf="!showToggle">-->
+  <!--Stopp-->
+  <!--</button>-->
+  <!--</div>-->
+
+  <div class="roundprogressbar">
+    <round-progress
+      [current]="countdown" [max]="countdownMax" [stroke]="pbStroke" [radius]="pbRadius"
+      [semicircle]="semicircle" [rounded]="rounded"
+      [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
+      [background]="background"
+      [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
+    </round-progress>
+    <div class="startandstop">
+
+      <div class="testdiv">
+        <div class="current" [ngStyle]="getOverlayStyle()">{{getCountDown()}}
+        </div>
+
+      </div>
+      <button ion-button large full round color="primary" (click)="startTimer(); toggleStartStop()" *ngIf="showToggle">
+        Start
+
+      </button>
+      <button ion-button large full round color="secondary" (click)="resetTimer(); toggleStartStop()" *ngIf="!showToggle">
+        Stopp
+      </button>
+
     </div>
-    <round-progress [current]="countdown" [max]="countdownMax" [stroke]="pbStroke" [radius]="pbRadius"
-                    [semicircle]="semicircle" [rounded]="rounded"
-                    [responsive]="responsive" [clockwise]="clockwise" [color]="gradient ? 'url(#gradient)' : color"
-                    [background]="background"
-                    [duration]="duration" [animation]="animation" [animationDelay]="animationDelay"></round-progress>
-    <!--<div class="progress-text">{{countdown}}</div>-->
-  </div><br>
-  <button ion-button large full round color = "primary" (click)="startTimer(); toggleStartStop()" *ngIf="showToggle">
-    Start
-  </button>
-  <button ion-button large full round color="danger"(click)="resetTimer(); toggleStartStop()" *ngIf="!showToggle">
-    Stopp
-  </button>
 
-</ion-content>
+  </div>
+  <!--<div class="progress-text">{{countdown}}</div>-->
+  <!--</div>-->
+  <br>
+  <!-- Segment in content -->
+  <ion-segment [(ngModel)]="difficulty" color="primary" (ionChange)="difficultyChanged($event)">
+    <ion-segment-button value="easy">
+      Enkel
+    </ion-segment-button>
+    <ion-segment-button value="medium">
+      Medel
+    </ion-segment-button>
+    <ion-segment-button value="hard">
+      Svår
+    </ion-segment-button>
+  </ion-segment>
 
 

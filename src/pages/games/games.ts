@@ -25,6 +25,7 @@ getGames(){
 
 openGame(game: any){
     //this.infoPage.setContent(game);
+    this.gameProvider.setActive(game.name);
     this.navCtrl.push(GameInfoPage, {game});
 }
 
