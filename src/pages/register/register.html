@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Playground Lights</ion-title>
+    <ion-title>Stockholm Ljuslek</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,27 +12,40 @@
 <ion-content padding>
 
   <form #loginForm="ngForm" (ngSubmit)="createAcc()" autocomplete="off">
-    <!--<ion-row>
-      <ion-col>-->
     <ion-list inset>
       <ion-item>
-        <ion-icon start name="contact"></ion-icon>
-        <ion-input placeholder="Namn" name="username" id="loginField" type="text" required [(ngModel)]="username"></ion-input>
+        <ion-label floating>Fullständigt namn</ion-label>
+        <ion-input type="text"></ion-input>
+<!--
+        <ion-input placeholder="Fullständigt namn" name="username" id="loginField" type="text" required [(ngModel)]="username"></ion-input>
+-->
       </ion-item>
 
       <ion-item>
-        <ion-icon name="contact"></ion-icon>
-        <ion-input placeholder="Epost adress" name="email" id="emailField" type="text" required [(ngModel)]="mail" #email></ion-input>
+        <ion-label floating>E-post adress</ion-label>
+        <ion-input type="text"></ion-input>
+<!--
+        <ion-input placeholder="E-post adress" name="email" id="emailField" type="text" required [(ngModel)]="mail" #email></ion-input>
+-->
       </ion-item>
 
       <ion-item>
+        <ion-label floating>Lösenord</ion-label>
+        <ion-input type="text"></ion-input>
+<!--
         <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
-        <ion-icon name="help-circle"></ion-icon>
+-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Bekräfta lösenord</ion-label>
+        <ion-input type="text"></ion-input>
+<!--
+        <ion-input placeholder="Bekräfta lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
+-->
       </ion-item>
 
     </ion-list>
-    <!-- </ion-col>
-   </ion-row>-->
     <ion-row>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
       <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>

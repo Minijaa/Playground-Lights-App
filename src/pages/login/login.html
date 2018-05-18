@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Playground Lights</ion-title>
+    <ion-title>Stockholm Ljuslek</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -29,26 +29,35 @@
     <button ion-button full (click)="hasha()">Registrera konto</button>
   </ng-template>-->
 
-
-
     <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
       <!--<ion-row>
         <ion-col>-->
           <ion-list inset>
-            <ion-item>
-              <ion-icon start name="contact"></ion-icon>
-              <ion-input placeholder="Epost adress" name="username" id="loginField" type="username" required [(ngModel)]="username" #email></ion-input>
 
-            </ion-item>
             <ion-item>
+              <ion-label floating>E-post adress</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>Lösenord</ion-label>
+              <ion-input type="text"></ion-input>
+            </ion-item>
+
+
+
+            <!--<ion-item>
+              <ion-input placeholder="E-post adress" name="username" id="loginField" type="username" required [(ngModel)]="username" #email></ion-input>
+            </ion-item>-->
+
+            <!--<ion-item>
               <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
               <ion-icon name="help-circle"></ion-icon>
-            </ion-item>
+            </ion-item>-->
 
             <ion-item>
               <ion-label>Kom ihåg</ion-label>
               <ion-checkbox checked="false"></ion-checkbox>
-
             </ion-item>
 
           </ion-list>
