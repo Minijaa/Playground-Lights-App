@@ -3,6 +3,7 @@ import {NavController, NavParams, ToastController, ViewController} from "ionic-a
 import {NgForm} from "@angular/forms";
 
 @Component({
+  selector: 'page-map-modal',
   templateUrl: './map-modal.html'
 })
 export class MapModalPage {

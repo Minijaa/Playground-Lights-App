@@ -23,18 +23,23 @@
     </ion-item>&ndash;&gt;
   </ion-list>-->
   <ion-searchbar id="search"></ion-searchbar>
-  <div ion-fixed #map id="map"></div>
-  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<!--  <ion-card id="contentBox">
-    <ion-card-header>-->
+  <div #map id="map">
+
+  </div>
+  <div class ="imageBox" id="imgBox"><ion-img id="img" class="image" src="{{openPlayground.image}}">dsa</ion-img></div>
+  <div class="contentBox" id="textBox" hidden=true>
+    <div class="parkTitle">
       {{openPlayground.name}}
-<!--    </ion-card-header>
-
-    <ion-card-content>-->
-
-      <div id="text">{{openPlayground.content}}</div>
-      <button ion-button icon-only (click)="openModal({test: openPlayground})"><ion-icon name="add-circle"></ion-icon></button>
-      <ion-img id="image" src="{{openPlayground.image}}"></ion-img>
+    </div>
+    <div ion-text id="text">
+      {{openPlayground.address}} {{openPlayground.postal}}
+      <br>
+      {{openPlayground.area}}
+    </div>
+    <div class="moreInfo">
+      <button ion-button (click)="openModal({playground: openPlayground})">Mer information</button>
+    </div>
+  </div>
 <!--    </ion-card-content>
     </ion-card>-->
 

@@ -1,0 +1,26 @@
+page-map-modal {
+
+  .scroll-content {
+    overflow-y: hidden;
+  }
+
+  .parkTitle {
+    font-size: 150%;
+  }
+  .text{
+    font-size: 100%;
+  }
+  .image{
+    border-style: solid hidden hidden solid;
+    border-width: 1px;
+    border-color: black;
+    position: fixed;
+    width: 50%;
+    z-index: 5;
+  }
+  ::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+}

@@ -21,6 +21,7 @@ import {MapProvider} from "../providers/map/map";
 import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 import {RoundProgressModule} from "angular-svg-round-progressbar";
 import {MapModalPage} from "../pages/map/map-modal";
+import { VisitorProvider } from '../providers/visitor/visitor';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {MapModalPage} from "../pages/map/map-modal";
     MapProvider,
     HttpClientModule,
     Facebook,
-    CoordinateHandler
+    CoordinateHandler,
+    VisitorProvider
   ]
 })
 export class AppModule {

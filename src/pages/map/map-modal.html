@@ -1,17 +1,26 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      {{park.name}}
+      Information
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios, core">Cancel</span>
+        <span ion-text color="primary" showWhen="ios, core"></span>
         <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <button ion-button (click)="sendReport()"><ion-icon name="map"></ion-icon>
+  <div class="parkTitle">{{park.name}}</div><div class="text">
+  {{park.address}} {{park.postal}}<br>{{park.area}}</div>
+  <br>
+
+  <div><ion-img src="{{park.image}}"></ion-img></div>
+  <br>
+  <div>{{park.content}}</div>
+  <button ion-button (click)="sendReport()">Rapportera problem
+  </button>
+  <button ion-button (click)="sendReport()"><ion-icon name="call"></ion-icon>
   </button>
 </ion-content>
