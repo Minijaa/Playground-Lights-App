@@ -21,7 +21,15 @@ import {MapProvider} from "../providers/map/map";
 import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 import {RoundProgressModule} from "angular-svg-round-progressbar";
 import {MapModalPage} from "../pages/map/map-modal";
+<<<<<<< HEAD
 import { VisitorProvider } from '../providers/visitor/visitor';
+=======
+import {FriendRequestPage} from "../pages/friend-request/friend-request";
+import {AddFriendPage} from "../pages/add-friend/add-friend";
+import {RegisterPage} from "../pages/register/register";
+import { AccountProvider } from '../providers/account/account';
+
+>>>>>>> Design-vänner
 
 @NgModule({
   declarations: [
@@ -33,8 +41,11 @@ import { VisitorProvider } from '../providers/visitor/visitor';
     GameInfoPage,
     CheckInPage,
     LoginPage,
+    RegisterPage,
     TabsPage,
-    MapModalPage
+    MapModalPage,
+    FriendRequestPage,
+    AddFriendPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +64,10 @@ import { VisitorProvider } from '../providers/visitor/visitor';
     CheckInPage,
     TabsPage,
     LoginPage,
-    MapModalPage
+    RegisterPage,
+    MapModalPage,
+    AddFriendPage,
+    FriendRequestPage
   ],
   providers: [
     StatusBar,
@@ -64,7 +78,11 @@ import { VisitorProvider } from '../providers/visitor/visitor';
     HttpClientModule,
     Facebook,
     CoordinateHandler,
+<<<<<<< HEAD
     VisitorProvider
+=======
+    AccountProvider
+>>>>>>> Design-vänner
   ]
 })
 export class AppModule {
