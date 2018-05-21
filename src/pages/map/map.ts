@@ -109,6 +109,7 @@ export class MapPage {
 
   openInfoBox() {
     document.getElementById('textBox').hidden = false;
+    document.getElementById('imgBox').hidden = false;
     document.getElementById('map').style.height = "70%";
     this.infoBoxOpened = true;
   }
@@ -228,6 +229,8 @@ class Park {
 
   setActive() {
     this.page.openPlayground = this;
+    console.log(this.image)
+    console.log(this)
     this.parkMarker.setMap(this.page.map)
     console.log("going to refresh")
     this.page.refreshData();

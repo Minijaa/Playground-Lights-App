@@ -5,7 +5,7 @@
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
-        <span ion-text color="primary" showWhen="ios, core"></span>
+        <span ion-text color="primary" showWhen="ios, core">Tillbaka</span>
         <ion-icon name="md-close" showWhen="android, windows"></ion-icon>
       </button>
     </ion-buttons>
@@ -19,8 +19,8 @@
   <div><ion-img src="{{park.image}}"></ion-img></div>
   <br>
   <div>{{park.content}}</div>
-  <button ion-button (click)="sendReport()">Rapportera problem
+  <button ion-button (click)="showReport()">Rapportera problem
   </button>
-  <button ion-button (click)="sendReport()"><ion-icon name="call"></ion-icon>
+  <button ion-button (click)="showReport()"><ion-icon name="call"></ion-icon>
   </button>
 </ion-content>

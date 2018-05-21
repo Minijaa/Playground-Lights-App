@@ -1,5 +1,5 @@
 import {Component, ViewChild} from "@angular/core";
-import {NavController, NavParams, ToastController, ViewController} from "ionic-angular";
+import {AlertController, NavController, NavParams, ToastController, ViewController} from "ionic-angular";
 import {NgForm} from "@angular/forms";
 
 @Component({
@@ -11,7 +11,7 @@ export class MapModalPage {
   park: any;
   error: any;
 
-  constructor(public params: NavParams, public viewCtrl: ViewController, public toastCtrl: ToastController, public navCtrl: NavController){
+  constructor(public params: NavParams, public viewCtrl: ViewController, public toastCtrl: ToastController, public navCtrl: NavController, public alertCtrl: AlertController){
     console.log(this.params)
     this.park = this.params.data.test;
     console.log(this.park)
@@ -19,6 +19,35 @@ export class MapModalPage {
   dismiss(){
     this.viewCtrl.dismiss();
   }
+  showReport(){
+    let alert = this.alertCtrl.create({
+      title: "Feedback",
+      message: "Skriv din feedback:",
+      inputs: [{
+        name: "feedback",
+        placeholder: "Skriv din feedback här"
+      },
+      ],
+      buttons:[
+        {
+          text: "Avbryt",
+          handler: data => {
+            console.log("Avbryt")
+          }
+        },
+        {
+          text: "Skicka",
+          handler: data => {
+            this.sendReport();
+            console.log("Skicka")
+
+    }
+        }
+      ]
+    });
+    alert.present();
+  }
+
   sendReport(){
       let toast = this.toastCtrl.create({
         message: "Skickat!", duration: 2000
