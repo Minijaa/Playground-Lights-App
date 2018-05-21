@@ -16,9 +16,7 @@ export class AccountProvider {
   addUserPass = "&password=";
   loginEmail = "http://localhost:8080/db/login?email=";
   loginPass = "&password=";
-
-  response: any;
-  //hash = Md5.hashStr("password")
+  getUserName = "http://localhost:8080/db/get?email=";
 
   constructor(public http: HttpClient) {
     console.log('Hello AccountProvider Provider');
@@ -33,17 +31,22 @@ export class AccountProvider {
         console.log(err);
       });
     });
-    // console.log("Login fetch started");
-    // this.response = fetch(this.loginEmail + username + this.loginPass + pass);
-    // console.log(this.response);
-    // console.log("Login fetch finished")
   }
-
-
 
   createAcc(username, email, pass) {
     return new Promise(resolve => {
       this.http.get(this.addUserName + username + this.addUserEmail + email + this.addUserPass + pass).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  getUsernameByEmail(email){
+    return new Promise(resolve => {
+      this.http.get(this.getUserName + email).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {

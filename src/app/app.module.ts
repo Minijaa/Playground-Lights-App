@@ -27,6 +27,7 @@ import {FriendRequestPage} from "../pages/friend-request/friend-request";
 import {AddFriendPage} from "../pages/add-friend/add-friend";
 import {RegisterPage} from "../pages/register/register";
 import { AccountProvider } from '../providers/account/account';
+import { UserDataProvider } from '../providers/user-data/user-data';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { AccountProvider } from '../providers/account/account';
     Facebook,
     CoordinateHandler,
     VisitorProvider,
-    AccountProvider
+    AccountProvider,
+    UserDataProvider
   ]
 })
 export class AppModule {

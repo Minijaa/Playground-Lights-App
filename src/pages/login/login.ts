@@ -4,10 +4,8 @@ import { Facebook, FacebookLoginResponse} from "@ionic-native/facebook";
 import {Md5} from "ts-md5";
 import {RegisterPage} from "../register/register";
 import {AccountProvider} from "../../providers/account/account";
-import {GameProvider} from "../../providers/game/game";
-import {MapPage} from "../map/map";
-import {HomePage} from "../home/home";
 import {TabsPage} from "../tabs/tabs";
+import {UserDataProvider} from "../../providers/user-data/user-data";
 
 @IonicPage()
 @Component({
@@ -17,15 +15,13 @@ import {TabsPage} from "../tabs/tabs";
 })
 export class LoginPage {
 
-  private username: string;
+  private mail: string;
   private password: string;
-  response: any;
-  responseString: any;
-  userData = null;
   userIsLoggedIn = false;
+  userData: any;
   hash = Md5.hashStr("password");
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fb: Facebook, public accProvider: AccountProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fb: Facebook, public accProvider: AccountProvider, public userDataProvider: UserDataProvider) {
     fb.getLoginStatus()
       .then( res => {
       console.log(res.status);
@@ -74,18 +70,31 @@ export class LoginPage {
 
   login(){
     var hash = Md5.hashStr(this.password);
-    this.accProvider.login(this.username, hash)
+    this.accProvider.login(this.mail, hash)
       .then(data => {
         //this.response = data;
-        this.responseString = JSON.stringify(data);
-        this.response = JSON.parse(this.responseString);
+        var responseString = JSON.stringify(data);
+        var response = JSON.parse(responseString);
         //var r = String(this.response.data);
-        if (this.response.data === "logged in") {
+        if (response.data === "logged in") {
+          this.setUserData(this.mail)
           this.navCtrl.push(TabsPage);
         } else {
-          alert(this.response.data);
+          alert(response.data);
         }
       });
+  }
+
+  setUserData(email: string){
+    this.userDataProvider.setEmail(email);
+    this.accProvider.getUsernameByEmail(email)
+      .then(data => {
+        //this.response = data;
+        var responseString = JSON.stringify(data);
+        var response = JSON.parse(responseString);
+        this.userDataProvider.setUsername(response.data);
+      });
+
   }
 
 }
