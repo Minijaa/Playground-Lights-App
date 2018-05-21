@@ -34,26 +34,26 @@
         <ion-col>-->
           <ion-list inset>
 
+            <!--<ion-item>-->
+              <!--<ion-label floating>E-post adress</ion-label>-->
+              <!--<ion-input type="text" required [(ngModel)]="username" ></ion-input>-->
+            <!--</ion-item>-->
+
+            <!--<ion-item>-->
+              <!--<ion-label floating>Lösenord</ion-label>-->
+              <!--<ion-input type="text" required [(ngModel)]="password" ></ion-input>-->
+            <!--</ion-item>-->
+
+
+          <!--Detta är vad du hade kommenterat bort, jämför dessa med borkommenterade ovanför så ser du skillnaden i information iaf :)-->
             <ion-item>
-              <ion-label floating>E-post adress</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-
-            <ion-item>
-              <ion-label floating>Lösenord</ion-label>
-              <ion-input type="text"></ion-input>
-            </ion-item>
-
-
-
-            <!--<ion-item>
               <ion-input placeholder="E-post adress" name="username" id="loginField" type="username" required [(ngModel)]="username" #email></ion-input>
-            </ion-item>-->
+            </ion-item>
 
-            <!--<ion-item>
+            <ion-item>
               <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
               <ion-icon name="help-circle"></ion-icon>
-            </ion-item>-->
+            </ion-item>
 
             <ion-item>
               <ion-label>Kom ihåg</ion-label>
@@ -89,7 +89,13 @@
     </form>
 
 
+  <ion-footer padding>
 
+    <ion-title>Inget konto?</ion-title>
+
+    <button ion-button full color="primary" (click)="registerAccount()">Registrera dig</button>
+
+  </ion-footer>
 
 
 

@@ -23,6 +23,7 @@ export class RegisterPage {
   private username: string;
   private password: string;
   private mail: string;
+  private confPassword: string;
   response: any;
   responseString: any;
 
