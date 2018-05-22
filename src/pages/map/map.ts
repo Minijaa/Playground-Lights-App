@@ -182,8 +182,9 @@ export class MapPage {
         }
         if (this.playgrounds[i].Attributes[j].Id == "PhoneNumber") {
           park.phone = this.playgrounds[i].Attributes[j].Value;
+         /* park.phone = park.phone.replace(/-/g, '');
+          park.phone = park.phone.replace(/\s/g, '');*/
         }
-
       }
       this.pGrounds.push(park)
     }
@@ -230,7 +231,7 @@ class Park {
   area: string;
   postal: any;
   imgHidden: boolean = true;
-  phone: any;
+  phone: string;
 
   getPinIcon() {
     if (this.visitors < 33) {

@@ -22,7 +22,7 @@ import {CoordinateHandler} from "../pages/map/CoordinateHandler";
 import {RoundProgressModule} from "angular-svg-round-progressbar";
 import {MapModalPage} from "../pages/map/map-modal";
 import { VisitorProvider } from '../providers/visitor/visitor';
-
+import { CallNumber } from '@ionic-native/call-number'
 import {FriendRequestPage} from "../pages/friend-request/friend-request";
 import {AddFriendPage} from "../pages/add-friend/add-friend";
 import {RegisterPage} from "../pages/register/register";
@@ -78,7 +78,8 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     CoordinateHandler,
     VisitorProvider,
     AccountProvider,
-    UserDataProvider
+    UserDataProvider,
+    CallNumber,
   ]
 })
 export class AppModule {
