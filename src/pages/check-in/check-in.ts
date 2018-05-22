@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FriendRequestPage} from "../friend-request/friend-request";
+import {AddFriendPage} from "../add-friend/add-friend";
 
 /**
  * Generated class for the CheckInPage page.
@@ -15,11 +17,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CheckInPage {
 
+
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckInPage');
+  }
+
+  openPageAddFriend() {
+    console.log("Hej");
+    this.navCtrl.push(AddFriendPage);
+
+
+  }
+
+  openPageFriendRequest() {
+    this.navCtrl.push(FriendRequestPage);
+
+
   }
 
 }

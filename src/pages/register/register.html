@@ -1,18 +1,70 @@
-<!--
-  Generated template for the RegisterPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Registrera konto</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Stockholm Ljuslek</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
+
+  <form #loginForm="ngForm" (ngSubmit)="createAcc()" autocomplete="off">
+    <ion-list inset>
+      <ion-item>
+        <ion-label floating>Fullständigt namn</ion-label>
+        <ion-input name="username" type="text" required [(ngModel)]="username"></ion-input>
+<!--
+        <ion-input placeholder="Fullständigt namn" name="username" id="loginField" type="text" required [(ngModel)]="username"></ion-input>
+-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>E-post adress</ion-label>
+        <ion-input name="email" type="text" required [(ngModel)]="mail" #email></ion-input>
+<!--
+        <ion-input placeholder="E-post adress" name="email" id="emailField" type="text" required [(ngModel)]="mail" #email></ion-input>
+-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Lösenord</ion-label>
+        <ion-input name="password" type="text" required [(ngModel)]="password"></ion-input>
+<!--
+        <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
+-->
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Bekräfta lösenord</ion-label>
+        <ion-input name="confirmPassword" type="text" required [(ngModel)]="confPassword"></ion-input>
+<!--
+        <ion-input placeholder="Bekräfta lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
+-->
+      </ion-item>
+
+    </ion-list>
+    <ion-row>
+      <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+      <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>
+    </ion-row>
+
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </ion-content>

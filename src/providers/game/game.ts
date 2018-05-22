@@ -12,12 +12,13 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class GameProvider {
-
-  apiUrl = 'http://localhost:8080/games';
-  startURL = 'http://localhost:8080/game?type=';
-  stopURL = 'http://localhost:8080/stopgames';
-  setActiveURL = 'http://localhost:8080/setactive?gamename=';
-  setDifficultyURL = 'http://localhost:8080/difficulty?level=';
+  //ip = 'http://localhost:8080';
+  ip = 'http://192.168.0.17:8080';
+  apiUrl = this.ip + '/games';
+  startURL = this.ip + '/game?type=';
+  stopURL = this.ip + '/stopgames';
+  setActiveURL = this.ip + '/setactive?gamename=';
+  setDifficultyURL = this.ip + '/difficulty?level=';
 
   // apiUrl = 'http://192.168.0.17:8080/games'
   // startURL = 'http://192.168.0.17:8080/game?type='
