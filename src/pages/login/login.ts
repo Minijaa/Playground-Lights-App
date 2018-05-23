@@ -81,6 +81,8 @@ export class LoginPage {
           this.navCtrl.push(TabsPage);
         } else {
           alert(response.data);
+          this.password = "";
+          this.mail = "";
         }
       });
   }

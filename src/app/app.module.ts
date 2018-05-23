@@ -28,6 +28,7 @@ import {AddFriendPage} from "../pages/add-friend/add-friend";
 import {RegisterPage} from "../pages/register/register";
 import { AccountProvider } from '../providers/account/account';
 import { UserDataProvider } from '../providers/user-data/user-data';
+import {MyAccountPage} from "../pages/my-account/my-account";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     TabsPage,
     MapModalPage,
     FriendRequestPage,
-    AddFriendPage
+    AddFriendPage,
+    MyAccountPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { UserDataProvider } from '../providers/user-data/user-data';
     RegisterPage,
     MapModalPage,
     AddFriendPage,
-    FriendRequestPage
+    FriendRequestPage,
+    MyAccountPage
   ],
   providers: [
     StatusBar,

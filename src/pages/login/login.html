@@ -29,23 +29,10 @@
     <button ion-button full (click)="hasha()">Registrera konto</button>
   </ng-template>-->
 
-    <form #loginForm="ngForm" (ngSubmit)="login()" autocomplete="off">
-      <!--<ion-row>
-        <ion-col>-->
+    <form #loginForm="ngForm" autocomplete="off">
+
           <ion-list inset>
 
-            <!--<ion-item>-->
-              <!--<ion-label floating>E-post adress</ion-label>-->
-              <!--<ion-input type="text" required [(ngModel)]="username" ></ion-input>-->
-            <!--</ion-item>-->
-
-            <!--<ion-item>-->
-              <!--<ion-label floating>Lösenord</ion-label>-->
-              <!--<ion-input type="text" required [(ngModel)]="password" ></ion-input>-->
-            <!--</ion-item>-->
-
-
-          <!--Detta är vad du hade kommenterat bort, jämför dessa med borkommenterade ovanför så ser du skillnaden i information iaf :)-->
             <ion-item>
               <ion-input placeholder="E-post adress" name="username" id="loginField" type="username" required [(ngModel)]="mail" #email></ion-input>
             </ion-item>
