@@ -34,21 +34,27 @@ export class RegisterPage {
     console.log('ionViewDidLoad RegisterPage');
   }
 
-  createAcc(){
-    var hash = Md5.hashStr(this.password);
-    this.accProvider.createAcc(this.username, this.mail, hash, )
-      .then(data => {
-        this.responseString = JSON.stringify(data);
-        this.response = JSON.parse(this.responseString);
-        //var r = String(this.response.data);
-        if (this.response.data === "A user with this email adress already exists.") {
-          alert(this.response.data)
-          this.navCtrl.push(TabsPage);
-        } else {
-          alert("Your account has been created!");
-          this.navCtrl.push(LoginPage);
-        }
-      });
+  createAcc() {
+    if (this.password === this.confPassword) {
+      var hash = Md5.hashStr(this.password);
+      this.accProvider.createAcc(this.username, this.mail, hash,)
+        .then(data => {
+          this.responseString = JSON.stringify(data);
+          this.response = JSON.parse(this.responseString);
+          //var r = String(this.response.data);
+          if (this.response.data === "A user with this email adress already exists.") {
+            alert(this.response.data);
+            this.navCtrl.push(TabsPage);
+          } else {
+            alert("Your account has been created!");
+            this.navCtrl.push(LoginPage);
+          }
+        });
+    } else {
+      alert("Both password fields must be identical");
+      this.password = "";
+      this.confPassword = "";
+    }
   }
 
 }
