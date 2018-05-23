@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild, NgZone} from '@angular/core';
-import {IonicPage, NavController, NavParams, Events, ModalController} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, Events, ModalController, ToastController} from 'ionic-angular';
 import {MapProvider} from "../../providers/map/map";
 import {CoordinateHandler} from "./CoordinateHandler";
 import {DomSanitizer} from '@angular/platform-browser';
@@ -35,36 +35,54 @@ export class MapPage {
   searchQuery: string = '';
   searchedParks: string[] = [];
   allParkNames: string[] = [];
+  amountofParksOnMap: number = 0;
+  allParksLoaded: boolean = false;
+
+  addParkNo(){
+    this.amountofParksOnMap++;
+    if(this.amountofParksOnMap == this.pGrounds.length) {
+      this.allParksLoaded = true;
+    }
+  }
 
   // Uppdaterar array över sökträffar
   getSearchItems(ev: any) {
     this.searchedParks.length = 0;
     console.log("getSearch");
-
     let val = ev.target.value;
-
     if (val && val.trim() != '') {
+      document.getElementById('searchBox').hidden = false;
       this.searchedParks = this.allParkNames.filter((item) => {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+    }else{
+      document.getElementById('searchBox').hidden = true;
     }
   }
   //Centrerar den valda parken ur sökresultaten på kartan
   centerSearchedPark(parkName: string) {
-    let chosenPark: any;
-    for (let i = 0; i < this.pGrounds.length; i++) {
-      if (this.pGrounds[i].name === parkName) {
-        chosenPark = this.pGrounds[i];
+    if(this.allParksLoaded) {
+      document.getElementById('searchBox').hidden = true;
+      let chosenPark: any;
+      for (let i = 0; i < this.pGrounds.length; i++) {
+        if (this.pGrounds[i].name === parkName) {
+          chosenPark = this.pGrounds[i];
+        }
       }
+      this.searchedParks = [];
+      console.log(this.searchQuery)
+      chosenPark.setActive();
+    }else{
+      let toast = this.toastCtrl.create({
+        message: "Var god vänta, kartan laddas...", duration: 2000
+      });
+      toast.present();
     }
-    this.searchedParks = [];
-    console.log(this.searchQuery)
-    chosenPark.setActive();
 
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mapProvider: MapProvider, public coordHandler: CoordinateHandler, public events: Events,
-              private zone: NgZone, public modalCtrl: ModalController, public visitorProvider: VisitorProvider) {
+              private zone: NgZone, public modalCtrl: ModalController, public visitorProvider: VisitorProvider, public toastCtrl: ToastController) {
     this.getPlaygrounds()
     this.events.subscribe('updateScreen', () => {
       this.zone.run(() => {
@@ -96,7 +114,7 @@ export class MapPage {
   openInfoBox() {
     if(!this.infoBoxOpened) {
       document.getElementById('textBox').hidden = false;
-      document.getElementById('map').style.height = "70%";
+      document.getElementById('map').style.height = "80%";
       this.infoBoxOpened = true;
     }
     if(this.openPlayground.image != null){
@@ -111,7 +129,7 @@ export class MapPage {
       document.getElementById('imgBox').hidden = true;
       document.getElementById('map').style.height = "100%";
       this.infoBoxOpened = false;
-      this.openPlayground = null;
+      this.openPlayground = new Park(this.visitorProvider);
     }
     this.refreshData();
   }
@@ -156,6 +174,7 @@ export class MapPage {
   }
 
   createParks() {
+    console.log("start")
     for (var i = 0/*272*/; i < /*300*/this.playgrounds.length; i++) {
       let park = new Park(this.visitorProvider)
       let pos = this.coordHandler.gridToGeodetic(this.playgrounds[i].GeographicalPosition.X, this.playgrounds[i].GeographicalPosition.Y);
@@ -164,6 +183,7 @@ export class MapPage {
       park.id = this.playgrounds[i].Id;
       park.page = this;
       park.getVisitor();
+      console.log("getting visitor")
       park.area = this.playgrounds[i].GeographicalAreas[0].Name;
 
       for (var j = 0; j < this.playgrounds[i].Attributes.length; j++) {
@@ -189,6 +209,7 @@ export class MapPage {
       }
       this.pGrounds.push(park)
     }
+    console.log("end")
     for (let i = 0; i < this.pGrounds.length; i++) {
       this.allParkNames.push(this.pGrounds[i].name);
     }
@@ -233,11 +254,13 @@ class Park {
   phone: string;
 
   getPinIcon() {
-    if (this.visitors < 33) {
+    if(this.visitors == null){
+      return this.markerBlue
+    } else if(this.visitors < 20 && this.visitors >= 0) {
       return this.markerGreen
-    } else if (this.visitors >= 33 && this.visitors < 65) {
+    } else if (this.visitors >= 20 && this.visitors < 45) {
       return this.markerYellow
-    } else if (this.visitors >= 65) {
+    } else if (this.visitors >= 45) {
       return this.markerRed
     } else {
       return this.markerBlue
@@ -272,5 +295,9 @@ class Park {
       this.map.panTo(this.getPosition())
       this.park.setActive();
     }))
+    if(this.onMap != true) {
+      this.onMap = true;
+      this.page.addParkNo();
+    }
   }
 }
