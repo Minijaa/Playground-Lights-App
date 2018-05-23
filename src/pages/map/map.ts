@@ -96,9 +96,13 @@ export class MapPage {
   openInfoBox() {
     if(!this.infoBoxOpened) {
       document.getElementById('textBox').hidden = false;
-      document.getElementById('imgBox').hidden = false;
       document.getElementById('map').style.height = "70%";
       this.infoBoxOpened = true;
+    }
+    if(this.openPlayground.image != null){
+      document.getElementById('imgBox').hidden = false;
+    }else{
+      document.getElementById('imgBox').hidden = true;
     }
   }
   closeInfoBox() {
@@ -107,6 +111,7 @@ export class MapPage {
       document.getElementById('imgBox').hidden = true;
       document.getElementById('map').style.height = "100%";
       this.infoBoxOpened = false;
+      this.openPlayground = null;
     }
     this.refreshData();
   }
@@ -133,7 +138,6 @@ export class MapPage {
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.map.MapPage = this;
     this.map.addListener("click", (function () {
-      console.log(this.MapPage)
       this.MapPage.closeInfoBox();
     }))
   }
@@ -146,7 +150,6 @@ export class MapPage {
     this.mapProvider.getPlaygrounds()
       .then(data => {
         this.playgrounds = data;
-        console.log(this.playgrounds)
         this.createParks();
         /* this.populateMap();*/
       });
@@ -182,15 +185,12 @@ export class MapPage {
         }
         if (this.playgrounds[i].Attributes[j].Id == "PhoneNumber") {
           park.phone = this.playgrounds[i].Attributes[j].Value;
-         /* park.phone = park.phone.replace(/-/g, '');
-          park.phone = park.phone.replace(/\s/g, '');*/
         }
       }
       this.pGrounds.push(park)
     }
     for (let i = 0; i < this.pGrounds.length; i++) {
       this.allParkNames.push(this.pGrounds[i].name);
-      console.log("hej");
     }
   }
 
@@ -201,7 +201,6 @@ export class MapPage {
       }
     }*/
   openModal(parkId) {
-    console.log("parkId")
     this.navCtrl.push(MapModalPage, parkId);
 
     // modal.onDidDismiss(() => this.ionViewDidLoad());
@@ -255,13 +254,9 @@ class Park {
 
   setActive() {
     this.page.openPlayground = this;
-    console.log(this.image)
-    console.log(this)
     this.parkMarker.setMap(this.page.map)
     this.page.openInfoBox();
-    console.log("going to refresh")
     this.page.refreshData();
-    console.log("ended")
   }
 
   putOnMap() {
