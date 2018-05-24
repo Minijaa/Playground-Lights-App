@@ -38,6 +38,12 @@
         <h3>Online</h3>
       </ion-list-header>
 
+      <ion-card *ngFor="let friend of onlineFriends">
+        <ion-item>
+          <ion-icon start name="contact"></ion-icon> friend.data
+        </ion-item>
+      </ion-card>
+
       <ion-item-sliding #item>
         <ion-item>
               <ion-icon start name="contact"></ion-icon> Annika M
