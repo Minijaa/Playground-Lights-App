@@ -10,10 +10,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FriendProvider {
 
-  ip = 'localhost:8080';
+  ip = 'http://localhost:8080';
   apiUrl = this.ip + '/db';
   onlineFriends = this.apiUrl + '/online?email=';
   offlineFriends = this.apiUrl + '/offline?email=';
+  testURL: string = 'http://localhost:8080/db/getFriends?email=sven@sven.com';
 
   constructor(public http: HttpClient) {
     console.log('Hello FriendProvider Provider');
@@ -23,6 +24,17 @@ export class FriendProvider {
     return new Promise(resolve => {
       console.log(this.onlineFriends+email);
       this.http.get(this.onlineFriends+email).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      }, err => {
+        console.log(err);
+      });
+    });
+  }
+
+  testGetFriends(){
+    return new Promise(resolve => {
+      this.http.get(this.testURL).subscribe(data => {
         resolve(data);
         console.log(data);
       }, err => {

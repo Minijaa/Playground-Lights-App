@@ -22,17 +22,29 @@ export class CheckInPage {
   onlineFriends : any;
 
   constructor(public navCtrl: NavController, public friendProvider: FriendProvider) {
-    this.getOnlineUsers();
+
   }
 
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckInPage');
+    this.testGetFriends();
   }
 
   getOnlineUsers(){
     this.friendProvider.getOnlineFriends("sven@sven.com")
+      .then(data => {
+        this.onlineFriends = data;
+        console.log(this.onlineFriends);
+      });
+  }
+
+  //Tänk på att denna metod nu enbart drar den hårdkodade sven@sven.com... får skapa en till metod i friendProvider
+  // och fixa url byggandet lite mer, skicka med den egna mailadress (som går att komma åt via user-data provider)
+  testGetFriends(){
+    console.log("Started testGetFriends");
+    this.friendProvider.testGetFriends()
       .then(data => {
         this.onlineFriends = data;
         console.log(this.onlineFriends);
