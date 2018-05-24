@@ -42,7 +42,8 @@
     "rxjs": "5.5.10",
     "sw-toolbox": "3.6.0",
     "ts-md5": "^1.2.4",
-    "zone.js": "0.8.26"
+    "zone.js": "0.8.26",
+    "mx.ferreyra.callnumber": "~0.0.2"
   },
   "devDependencies": {
     "@ionic/app-scripts": "3.1.9",
@@ -60,7 +61,8 @@
         "APP_ID": "418015651995583",
         "APP_NAME": "PlayGroundLights",
         "ANDROID_SDK_VERSION": "4.+"
-      }
+      },
+      "mx.ferreyra.callnumber": {}
     },
     "platforms": [
       "android",

@@ -271,7 +271,7 @@ class Park {
     this.visitorProvider.getVisitors(this.id)
       .then(data => {
         this.visitors = data;
-        this.putOnMap()
+        this.putOnMap(this.getPinIcon())
       });
   }
 
@@ -280,19 +280,21 @@ class Park {
     this.parkMarker.setMap(this.page.map)
     this.page.openInfoBox();
     this.page.refreshData();
+    console.log(this.parkMarker.getPosition())
+    this.parkMarker.map.panTo(this.parkMarker.getPosition())
+    this.parkMarker.map.setZoom(15);
   }
 
-  putOnMap() {
+  putOnMap(icon) {
     this.parkMarker = new google.maps.Marker({
       position: this.position,
       title: this.name,
       map: this.page.map,
       name: this.name,
-      icon: this.getPinIcon(),
+      icon: icon,
       park: this
     });
     google.maps.event.addListener(this.parkMarker, "click", (function () {
-      this.map.panTo(this.getPosition())
       this.park.setActive();
     }))
     if(this.onMap != true) {

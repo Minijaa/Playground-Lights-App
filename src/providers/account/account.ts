@@ -10,13 +10,15 @@ import "rxjs/add/operator/map";
 */
 @Injectable()
 export class AccountProvider {
+  ip = "http://localhost:8080";
+  //ip = "http://10.200.39.140:8080";
 
-  addUserName = "http://localhost:8080/db/dbadd?name=";
+  addUserName = this.ip+"/db/dbadd?name=";
   addUserEmail = "&email=";
   addUserPass = "&password=";
-  loginEmail = "http://localhost:8080/db/login?email=";
+  loginEmail = this.ip+"/db/login?email=";
   loginPass = "&password=";
-  getUserName = "http://localhost:8080/db/get?email=";
+  getUserName = this.ip+"/db/get?email=";
 
   constructor(public http: HttpClient) {
     console.log('Hello AccountProvider Provider');
