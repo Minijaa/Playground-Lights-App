@@ -22,21 +22,22 @@
       <h2>{{playgrounds.data}}</h2>
     </ion-item>&ndash;&gt;
   </ion-list>-->
-  <ion-searchbar id="search"
-    [showCancelButton]="shouldShowCancel"
-    (ionInput)="getSearchItems($event)">
-  </ion-searchbar>
 
-  <ion-list id ="searchList">
-    <ion-item *ngFor="let parkName of searchedParks" (click)="centerSearchedPark(parkName)" id="searchItem">
-      {{parkName}}
-    </ion-item>
-  </ion-list>
 
   <div #map id="map">
-
   </div>
-  <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}"></div>
+  <div id="search"><ion-searchbar
+                 [showCancelButton]="shouldShowCancel"
+                 (ionInput)="getSearchItems($event)">
+  </ion-searchbar>
+    <ion-list id ="searchList">
+      <ion-item *ngFor="let parkName of searchedParks" (click)="centerSearchedPark(parkName)" id="searchItem">
+        {{parkName}}
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}" (click)="openModal({test: openPlayground})"></div>
   <div class="contentBox" id="textBox" hidden=true>
     <div class="parkTitle">
       {{openPlayground.name}}

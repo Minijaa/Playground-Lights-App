@@ -5,6 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {LoginPage} from "../pages/login/login";
 import {TabsPage} from "../pages/tabs/tabs";
+import {UserDataProvider} from "../providers/user-data/user-data";
+import {MyAccountPage} from "../pages/my-account/my-account";
 
 
 @Component({
@@ -13,9 +15,7 @@ import {TabsPage} from "../pages/tabs/tabs";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
-
-
+  rootPage: any = LoginPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
@@ -23,10 +23,10 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Logga in', component: LoginPage},
-      { title: "Tabs", component: TabsPage}
+      { title: "DEBUG MODE: No Login", component: TabsPage},
+      { title: "Profil", component: MyAccountPage},
+      { title: 'Logga ut', component: LoginPage}
     ];
-
   }
 
   initializeApp() {
@@ -41,6 +41,7 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
+
     this.nav.setRoot(page.component);
   }
 }

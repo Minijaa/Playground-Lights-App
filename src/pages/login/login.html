@@ -66,6 +66,7 @@
     <button ion-button full (click)="hasha()">Registrera konto</button>
   </ng-template>-->
 
+
   <div class="login-box" id="container">
     <form #loginForm="ngForm" autocomplete="off">
       <ion-row>
@@ -73,6 +74,7 @@
           <ion-list inset>
 
             <ion-item id="rounded">
+
               <ion-input placeholder="E-post adress" name="username" id="loginField" type="username" required [(ngModel)]="mail" #email></ion-input>
             </ion-item>
 

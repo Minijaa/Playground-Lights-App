@@ -39,8 +39,8 @@ export class GameInfoPage {
 
   timer: any;
   game: any;
-  countdown: number = 10;
-  countdownMax: number = 10; //this is for the progressbar
+  countdown: number = 5;
+  countdownMax: number = 5; //this is for the progressbar
   firstRun: boolean = true;
   gameStopped: boolean = false;
   showToggle: boolean = true;
@@ -49,6 +49,10 @@ export class GameInfoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
     this.game = navParams.get('game')
     this.difficulty = "easy";
+    // if (this.game.name === "redlamp"){
+    //   document.getElementById('sas').setAttribute("class", "startandstop2");
+    //   console.log("redllllight");
+    // }
   }
 
   ionViewDidLoad() {
@@ -76,12 +80,20 @@ export class GameInfoPage {
   }
 
   resetTimer() {
-    this.countdown = 10;
+    if (this.game.name === "redlamp"){
+      this.gameProvider.startGame(this.game.name);
+      return;
+    }
+    this.countdown = 5;
     this.gameStopped = true;
     this.gameProvider.stopGame(this.game.name);
   }
 
   startTimer() {
+    if (this.game.name === "redlamp"){
+      this.gameProvider.startGame(this.game.name);
+      return;
+    }
     if (this.firstRun) {
       this.gameProvider.startGame(this.game.name);
       this.firstRun = false;
@@ -89,7 +101,7 @@ export class GameInfoPage {
 
     } else if (this.gameStopped) {
       this.gameStopped = false;
-      this.countdown = 10;
+      this.countdown = 5;
       this.firstRun = true;
       return;
     }
@@ -111,6 +123,19 @@ export class GameInfoPage {
   getOverlayStyle() {
     let isSemi = this.semicircle;
     let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
+    if (this.game.name === "redlamp"){
+
+      return {
+        'top': isSemi ? '0' : '0%',
+        'bottom': isSemi ? '0%' : '0',
+        'left': '0%',
+        'transform': 0,
+        '-moz-transform': 0,
+        '-webkit-transform': 0,
+        'font-size': 0 //this.pbRadius / 2.5 + 'px'
+      };
+    }
+
 
     return {
       'top': isSemi ? 'auto' : '50%',
@@ -126,5 +151,35 @@ export class GameInfoPage {
   difficultyChanged() {
     this.gameProvider.setDifficulty(this.difficulty);
     console.log(this.difficulty);
+  }
+
+  getButtonColors(){
+    if (this.game.name === 'runhere'){
+      return "light";
+    }else if(this.game.name === 'danger'){
+      return "primary";
+    }else return "secondary";
+  }
+
+  getRules(){
+    var htmlstring = this.game.rules.replace(/(\r\n|\n|\r)/gm, '"\n"');
+    return htmlstring;
+
+    //text = text.replace(/(rn|r|n)/g, 'n'); return text.replace(doublenewlinesRE, "$1nn$2"); }
+  }
+
+  getStart() {
+    if (this.game.name === "redlamp"){
+      return "Grön!";
+    }
+    return "Start";
+  }
+
+  getStop(){
+    if (this.game.name === "redlamp"){
+      return "Röd!";
+    }else {
+      return "Stopp"
+    }
   }
 }

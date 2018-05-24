@@ -58,7 +58,7 @@ export class MapPage {
       }
     }
     this.searchedParks = [];
-    this.map.setCenter(chosenPark.position)
+    console.log(this.searchQuery)
     chosenPark.setActive();
 
   }
@@ -93,31 +93,56 @@ export class MapPage {
     }
 
   }
-
+  openInfoBox() {
+    if(!this.infoBoxOpened) {
+      document.getElementById('textBox').hidden = false;
+      document.getElementById('map').style.height = "70%";
+      this.infoBoxOpened = true;
+    }
+    if(this.openPlayground.image != null){
+      document.getElementById('imgBox').hidden = false;
+    }else{
+      document.getElementById('imgBox').hidden = true;
+    }
+  }
+  closeInfoBox() {
+    if(this.infoBoxOpened) {
+      document.getElementById('textBox').hidden = true;
+      document.getElementById('imgBox').hidden = true;
+      document.getElementById('map').style.height = "100%";
+      this.infoBoxOpened = false;
+      this.openPlayground = null;
+    }
+    this.refreshData();
+  }
 
   loadMap() {
     let latLng = new google.maps.LatLng(59.4072096, 17.9460351);
+    let myStyles =[
+      {
+        featureType: "poi",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
 
     let mapOptions = {
       center: latLng,
       zoom: 15,
       disableDefaultUI: true,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      styles: myStyles
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-  }
-
-  openInfoBox() {
-    document.getElementById('textBox').hidden = false;
-    document.getElementById('imgBox').hidden = false;
-    document.getElementById('map').style.height = "70%";
-    this.infoBoxOpened = true;
+    this.map.MapPage = this;
+    this.map.addListener("click", (function () {
+      this.MapPage.closeInfoBox();
+    }))
   }
 
   refreshData() {
-    if (!this.infoBoxOpened) {
-      this.openInfoBox();
-    }
     this.events.publish('updateScreen');
   }
 
@@ -125,7 +150,6 @@ export class MapPage {
     this.mapProvider.getPlaygrounds()
       .then(data => {
         this.playgrounds = data;
-        console.log(this.playgrounds)
         this.createParks();
         /* this.populateMap();*/
       });
@@ -159,13 +183,14 @@ export class MapPage {
         if (this.playgrounds[i].Attributes[j].Id == "PostalAddress") {
           park.postal = this.playgrounds[i].Attributes[j].Value;
         }
-
+        if (this.playgrounds[i].Attributes[j].Id == "PhoneNumber") {
+          park.phone = this.playgrounds[i].Attributes[j].Value;
+        }
       }
       this.pGrounds.push(park)
     }
     for (let i = 0; i < this.pGrounds.length; i++) {
       this.allParkNames.push(this.pGrounds[i].name);
-      console.log("hej");
     }
   }
 
@@ -176,7 +201,6 @@ export class MapPage {
       }
     }*/
   openModal(parkId) {
-    console.log("parkId")
     this.navCtrl.push(MapModalPage, parkId);
 
     // modal.onDidDismiss(() => this.ionViewDidLoad());
@@ -206,6 +230,7 @@ class Park {
   area: string;
   postal: any;
   imgHidden: boolean = true;
+  phone: string;
 
   getPinIcon() {
     if (this.visitors < 33) {
@@ -229,12 +254,9 @@ class Park {
 
   setActive() {
     this.page.openPlayground = this;
-    console.log(this.image)
-    console.log(this)
     this.parkMarker.setMap(this.page.map)
-    console.log("going to refresh")
+    this.page.openInfoBox();
     this.page.refreshData();
-    console.log("ended")
   }
 
   putOnMap() {
@@ -247,7 +269,7 @@ class Park {
       park: this
     });
     google.maps.event.addListener(this.parkMarker, "click", (function () {
-      this.map.setCenter(this.getPosition())
+      this.map.panTo(this.getPosition())
       this.park.setActive();
     }))
   }
