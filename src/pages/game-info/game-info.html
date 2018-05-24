@@ -37,6 +37,7 @@
       [background]="background"
       [duration]="duration" [animation]="animation" [animationDelay]="animationDelay">
     </round-progress>
+
     <div class="startandstop">
 
       <div class="testdiv">
@@ -44,22 +45,20 @@
         </div>
 
       </div>
-      <button ion-button large full round color="primary" (click)="startTimer(); toggleStartStop()" *ngIf="showToggle">
+      <button  ion-button large full round  color={{getButtonColors()}} (click)="startTimer(); toggleStartStop()" *ngIf="showToggle">
         Start
 
       </button>
-      <button ion-button large full round color="danger" (click)="resetTimer(); toggleStartStop()" *ngIf="!showToggle">
+      <button ion-button large full round  color="danger" (click)="resetTimer(); toggleStartStop()" *ngIf="!showToggle">
         Stopp
       </button>
-
     </div>
-
   </div>
   <!--<div class="progress-text">{{countdown}}</div>-->
   <!--</div>-->
   <br>
   <!-- Segment in content -->
-  <ion-segment [(ngModel)]="difficulty" color="primary" (ionChange)="difficultyChanged($event)">
+  <ion-segment [(ngModel)]="difficulty" color={{getButtonColors()}} (ionChange)="difficultyChanged($event)">
     <ion-segment-button value="easy">
       Enkel
     </ion-segment-button>

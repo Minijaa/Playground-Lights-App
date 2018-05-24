@@ -9,7 +9,44 @@
 
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="masters">
+
+  <ion-row class="logo-row">
+    <ion-col></ion-col>
+    <ion-col width-67>
+      <img src="http://placehold.it/300x200"/>
+    </ion-col>
+    <ion-col></ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col></ion-col>
+  </ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row><ion-row>
+  <ion-col></ion-col>
+</ion-row>
+
 <!--
   &lt;!&ndash;Welcomes the user; else shows login-buttons&ndash;&gt;
 
@@ -29,70 +66,47 @@
     <button ion-button full (click)="hasha()">Registrera konto</button>
   </ng-template>-->
 
-    <form #loginForm="ngForm" autocomplete="off">
 
+  <div class="login-box" id="container">
+    <form #loginForm="ngForm" autocomplete="off">
+      <ion-row>
+        <ion-col>
           <ion-list inset>
 
-            <ion-item>
+            <ion-item id="rounded">
+
               <ion-input placeholder="E-post adress" name="username" id="loginField" type="username" required [(ngModel)]="mail" #email></ion-input>
             </ion-item>
 
-            <ion-item>
+            <ion-item id="rounded">
               <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
-              <ion-icon name="help-circle"></ion-icon>
             </ion-item>
 
-            <ion-item>
+           <!-- <ion-item>
               <ion-label>Kom ihåg</ion-label>
               <ion-checkbox checked="false"></ion-checkbox>
-            </ion-item>
+            </ion-item>-->
 
           </ion-list>
-       <!-- </ion-col>
-      </ion-row>-->
-      <ion-row>
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-          <button ion-button class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" (click)="login()">Logga in</button>
+        </ion-col>
       </ion-row>
+      <ion-row>
 
-        <ion-title>eller</ion-title>
+          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+          <button ion-button round full id="buttons" color="primary" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" (click)="login()">Logga in</button>
 
-
-        <button ion-button full color="light" (click)="loginWithFB()">Logga in med Facebook</button>
-
-        <ion-footer padding>
-
-            <ion-title>Inget konto?</ion-title>
-
-          <button ion-button full color="primary" (click)="registerAccount()">Registrera dig</button>
-
-        </ion-footer>
-
-
-
-
-
-
+      </ion-row>
     </form>
 
+      <button ion-button round full id="buttons" color="light" (click)="loginWithFB()">Logga in med Facebook</button>
 
-  <ion-footer padding>
+    <ion-col>
+    </ion-col>
+      <ion-col>
+      </ion-col>
 
-    <ion-title>Inget konto?</ion-title>
+    <button ion-button id="text" class="register-btn" block clear (click)="registerAccount()">Registrera dig</button>
 
-    <button ion-button full color="primary" (click)="registerAccount()">Registrera dig</button>
-
-  </ion-footer>
-
-
-
-
-
-
-
-
-
-
-
+  </div>
 
 </ion-content>
