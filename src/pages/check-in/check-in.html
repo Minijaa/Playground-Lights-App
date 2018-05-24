@@ -32,11 +32,22 @@
 
 <ion-content>
 
+  <!--Här börjar koden för att lista vänner, det måste inte vara ett ion-card-->
+  <ion-card *ngFor="let friend of onlineFriends">
+    <ion-item>
+      <!--Det finns fler attribut som går att lista också, som tex: email, online, checkedIn, checkedInPlayground... för att lista dessa skriv bara till {{friend.ATTRIBUTE}}-->
+      <h2> {{friend.name}}</h2>
+    </ion-item>
+  </ion-card>
+  <!--Här slutar koden för att lista vänner-->
+
 
     <ion-list>
       <ion-list-header color="primary">
         <h3>Online</h3>
       </ion-list-header>
+
+
 
       <ion-item-sliding #item>
         <ion-item>
