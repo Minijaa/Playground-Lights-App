@@ -26,8 +26,8 @@
 
   <div #map id="map">
   </div>
-  <div id="search"><ion-searchbar
-    (click)="getSearchItems($event)"
+  <div id="search"><ion-searchbar id="searchInput"
+                 (click)="getSearchItems($event)"
                  [showCancelButton]="shouldShowCancel"
                  (ionInput)="getSearchItems($event)">
   </ion-searchbar>

@@ -53,7 +53,7 @@ export class MapModalPage {
   }
   showRadio() {
     let alert = this.alertCtrl.create();
-    alert.setTitle('Lightsaber color');
+    alert.setTitle('Tyck Till');
 
     alert.addInput({
       type: 'radio',

@@ -157,6 +157,9 @@ export class MapPage {
     this.map.MapPage = this;
     this.map.addListener("click", (function () {
       this.MapPage.closeInfoBox();
+      document.getElementById('searchInput').hidden = true
+      document.getElementById('searchInput').hidden = false
+      document.getElementById('searchBox').hidden = true
     }))
   }
 
@@ -183,7 +186,6 @@ export class MapPage {
       park.id = this.playgrounds[i].Id;
       park.page = this;
       park.getVisitor();
-      console.log("getting visitor")
       park.area = this.playgrounds[i].GeographicalAreas[0].Name;
 
       for (var j = 0; j < this.playgrounds[i].Attributes.length; j++) {
@@ -210,6 +212,7 @@ export class MapPage {
       this.pGrounds.push(park)
     }
     console.log("end")
+
     for (let i = 0; i < this.pGrounds.length; i++) {
       this.allParkNames.push(this.pGrounds[i].name);
     }
@@ -238,7 +241,7 @@ class Park {
   readonly markerYellow: string = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
   readonly markerGreen: string = "http://maps.google.com/mapfiles/ms/icons/green-dot.png"
 
-  name: string = "Tryck på en lekplats!";
+  name: string = "ERROR!";
   content: string = "Det finns ingen information om denna lekplats.";
   position: any;
   parkMarker: any;
@@ -256,9 +259,9 @@ class Park {
   getPinIcon() {
     if(this.visitors == null){
       return this.markerBlue
-    } else if(this.visitors < 20 && this.visitors >= 0) {
+    } else if(this.visitors < 25 && this.visitors >= 0) {
       return this.markerGreen
-    } else if (this.visitors >= 20 && this.visitors < 45) {
+    } else if (this.visitors >= 25 && this.visitors < 45) {
       return this.markerYellow
     } else if (this.visitors >= 45) {
       return this.markerRed
