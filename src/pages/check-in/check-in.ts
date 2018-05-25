@@ -29,6 +29,9 @@ export class CheckInPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckInPage');
+
+  }
+  ionViewDidEnter(){
     this.testGetFriends();
   }
 
