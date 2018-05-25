@@ -14,13 +14,13 @@ export class FriendProvider {
   apiUrl = this.ip + '/db';
   onlineFriends = this.apiUrl + '/online?email=';
   offlineFriends = this.apiUrl + '/offline?email=';
-  testURL: string = 'http://localhost:8080/db/getFriends?email=sven@sven.com';
+  testURL: string = 'http://localhost:8080/db/getFriends?email=samuel@slk.se';
 
   constructor(public http: HttpClient) {
     console.log('Hello FriendProvider Provider');
   }
 
-  getOnlineFriends(email){
+  getFriends(email){
     return new Promise(resolve => {
       console.log(this.onlineFriends+email);
       this.http.get(this.onlineFriends+email).subscribe(data => {
