@@ -48,7 +48,7 @@ export class GameInfoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
     this.game = navParams.get('game')
-    this.difficulty = "easy";
+    this.difficulty = "medium";
     // if (this.game.name === "redlamp"){
     //   document.getElementById('sas').setAttribute("class", "startandstop2");
     //   console.log("redllllight");
