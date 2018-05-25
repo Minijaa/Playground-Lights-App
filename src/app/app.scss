@@ -14,3 +14,69 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.masters{
+  background-color: #006ebf;
+
+}
+
+.profilePicture {
+
+
+  height: 150px;
+  width: 110px;
+  margin-right: 300px;
+  margin-top: 10px;
+  margin-left: 75px;
+
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 15px;
+
+}
+
+#profileInfo {
+
+
+  background-color: #c2eee7;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 15px;
+  width: 215px;
+  margin-right: 200px;
+  margin-top: -5px;
+  margin-left: -10px;
+
+
+}
+
+#container {
+
+
+  background-color: #c2eee7;
+  margin-left:auto;
+  margin-right: auto;
+  width: 87%;
+  height: 195px;
+  -moz-border-radius: 100px;
+  -webkit-border-radius: 10px;
+
+
+}
+
+#roundedProfile {
+
+  background-color: #dd1f26;
+
+  outline-width: 10px;
+  color: #black;
+  width: 87%;
+  height: 10px;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  border-radius: 400px;
+  margin-bottom: 10px;
+  right: -20px;
+  margin-top: -90px;
+
+
+}
+

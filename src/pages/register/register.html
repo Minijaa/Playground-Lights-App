@@ -40,14 +40,14 @@
 -->
 
       <ion-item  id="rounded">
-        <ion-input placeholder="Lösenord" name="password" type="text" required [(ngModel)]="password"></ion-input>
+        <ion-input placeholder="Lösenord" name="password" type="password" required [(ngModel)]="password"></ion-input>
 <!--
         <ion-input placeholder="Lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
 -->
       </ion-item>
 
       <ion-item id="rounded">
-        <ion-input placeholder="Bekräfta lösenord" name="confirmPassword" type="text" required [(ngModel)]="confPassword"></ion-input>
+        <ion-input placeholder="Bekräfta lösenord" name="confirmPassword" type="password" required [(ngModel)]="confPassword"></ion-input>
 <!--
         <ion-input placeholder="Bekräfta lösenord" name="password" id="passwordField" type="password" required [(ngModel)]="password"></ion-input>
 -->
@@ -56,12 +56,17 @@
     </ion-list>
     <ion-row>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-      <button ion-button round full id="buttons" color="primary" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>
+      <button ion-button round full id="buttons" color="light" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>
     </ion-row>
 
   </form>
 
   </div>
+
+    <img id="registerPage1" src="assets/imgs/games_icon_run_blue.png">
+  <img id="registerPage3" src="assets/imgs/games_icon_lamp_blue.png">
+    <img id="registerPage2" src="assets/imgs/games_icon_red_blue.png">
+
 
 
 
