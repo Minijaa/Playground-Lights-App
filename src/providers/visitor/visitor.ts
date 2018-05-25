@@ -13,6 +13,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class VisitorProvider {
 
+  //apiUrl = 'http://10.200.39.140:8080/sensors?parkid='
   apiUrl = 'http://localhost:8080/sensors?parkid='
 
   constructor(public http: HttpClient) {

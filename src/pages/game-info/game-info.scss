@@ -69,8 +69,13 @@ page-game-info {
   }
 
   .rules{
-    text-align: justify;
+    text-align: left;
     text-justify: inter-word;
+    font-size: 20px;
+  }
+
+  #ruleCard{
+    background-color: aliceblue;
     font-size: 16px;
   }
 

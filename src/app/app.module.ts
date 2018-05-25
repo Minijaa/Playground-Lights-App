@@ -29,6 +29,7 @@ import {RegisterPage} from "../pages/register/register";
 import { AccountProvider } from '../providers/account/account';
 import { UserDataProvider } from '../providers/user-data/user-data';
 import {MyAccountPage} from "../pages/my-account/my-account";
+import { FriendProvider } from '../providers/friend/friend';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import {MyAccountPage} from "../pages/my-account/my-account";
     AccountProvider,
     UserDataProvider,
     CallNumber,
+    FriendProvider,
   ]
 })
 export class AppModule {

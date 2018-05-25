@@ -6,16 +6,24 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{game.gameTitle}}</ion-title>
+    <ion-title>{{game.gameHeading}}</ion-title>
   </ion-navbar>
 </ion-header>
+<ion-content>
 
+</ion-content>
+<!--<ion-content *ngFor="let ruleRow of game.rules">{{ruleRow}}<br></ion-content>-->
+<!--<ion-title *ngFor="let ruleRow of game.rules">-->
+<ion-content padding >
+  <!--<h4 >{{game.gameHeading}}</h4>-->
 
-<ion-content padding>
-  <h4>Lekregler:</h4>
-  <div class="rules">
-    {{game.rules}}
-  </div>
+    <div class="rules"><ion-card id="ruleCard" padding *ngFor="let ruleRow of game.rules">
+      {{ruleRow}}
+    </ion-card>
+    </div>
+  <!--<div class="rules">-->
+    <!--&lt;!&ndash;{{game.rules}}&ndash;&gt;-->
+  <!--</div>-->
   <br>
 
   <!--<div align="center">-->

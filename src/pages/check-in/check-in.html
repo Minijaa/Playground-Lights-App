@@ -13,16 +13,16 @@
     </button>
     <ion-title>Vänner</ion-title>
 
-    <ion-buttons end>
-      <button ion-button (click)="openPageFriendRequest()" start>
-        <ion-icon name="contact" ></ion-icon>
-      </button>
-    </ion-buttons>
+    <!--<ion-buttons end>-->
+      <!--<button ion-button (click)="openPageFriendRequest()" start>-->
+        <!--<ion-icon name="contact" ></ion-icon>-->
+      <!--</button>-->
+    <!--</ion-buttons>-->
 
     <ion-buttons end>
-    <button ion-button (click)="openPageAddFriend()" icon-only>
-      <ion-icon name="add" ></ion-icon>
-    </button>
+      <button ion-button (click)="openPageAddFriend()" icon-only>
+        <ion-icon name="add" ></ion-icon>
+      </button>
     </ion-buttons>
 
   </ion-navbar>
@@ -31,89 +31,44 @@
 
 
 <ion-content>
+  <ion-list>
 
+    <ion-list-header color="primary">
+      <h3>Online</h3>
+    </ion-list-header>
 
-    <ion-list>
-      <ion-list-header color="primary">
-        <h3>Online</h3>
-      </ion-list-header>
+    <!--Här börjar koden för att lista vänner, det måste inte vara ett ion-card-->
 
-      <ion-item-sliding #item>
-        <ion-item>
-              <ion-icon start name="contact"></ion-icon> Annika M
+      <!--<ion-item-sliding #item>-->
+    <div *ngFor="let friend of onlineFriends">
+        <ion-item  *ngIf="friend.online">
+          <ion-icon start name="contact">{{friend.name}}</ion-icon>
+          <ion-card *ngIf="friend.checkedIn">Incheckad på: Truddelutten</ion-card>
         </ion-item>
+    </div>
+        <!--<ion-item-options side="right">-->
+          <!--<button ion-button color="danger" (click)="unread(item)">Radera vän</button>-->
+        <!--</ion-item-options>-->
+      <!--</ion-item-sliding>-->
 
-          <ion-item-options side="right">
-            <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-          </ion-item-options>
-      </ion-item-sliding>
+    <!--Här slutar koden för att lista vänner-->
+
+    <ion-list-header color="danger">
+      <H3>Offline</H3>
+    </ion-list-header>
 
 
+      <!--<ion-item-sliding #item>-->
+    <div *ngFor="let friend of onlineFriends">
+      <ion-item  *ngIf="!friend.online">
+        <ion-icon start name="contact">{{friend.name}}</ion-icon>
+      </ion-item>
+    </div>
+        <!--<ion-item-options side="right">-->
+          <!--<button ion-button color="danger" (click)="unread(item)">Radera vän</button>-->
+        <!--</ion-item-options>-->
+      <!--</ion-item-sliding>-->
 
 
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Josef K
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-list-header color="danger">
-        <H3>Offline</H3>
-      </ion-list-header>
-
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Fredrik F
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Stefan J
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Mattias L
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Johan T
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-      <ion-item-sliding #item>
-        <ion-item>
-          <ion-icon start name="contact"></ion-icon> Emilia S
-        </ion-item>
-
-        <ion-item-options side="right">
-          <button ion-button color="danger" (click)="unread(item)">Radera vän</button>
-        </ion-item-options>
-      </ion-item-sliding>
-
-    </ion-list>
+  </ion-list>
 </ion-content>
