@@ -28,6 +28,7 @@
   </div>
   <div id="search"><ion-searchbar
     (click)="getSearchItems($event)"
+                  placeholder="Sök"
                  [showCancelButton]="shouldShowCancel"
                  (ionInput)="getSearchItems($event)">
   </ion-searchbar>

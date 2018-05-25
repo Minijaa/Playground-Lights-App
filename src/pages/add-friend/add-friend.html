@@ -19,7 +19,7 @@
   <ion-list>
     <ion-item *ngFor="let result of results" >
       <ion-icon start name="contact"> {{result.name}} </ion-icon>
-      <button ion-button (click)="addFriend(result.email)" color="light-green">Lägg till vän</button>
+      <button ion-button item-end icon-left (click)="addFriend(result.email)" color="light-green">Lägg till vän</button>
     </ion-item>
   </ion-list>
 
