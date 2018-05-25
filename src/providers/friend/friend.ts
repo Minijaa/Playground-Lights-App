@@ -55,8 +55,13 @@ export class FriendProvider {
   }
 
   addFriend(email){
-    this.http.get(this.addFriendURL+email);
-    console.log(this.addFriendURL+email);
+    return new Promise(resolve => {
+      this.http.get(this.addFriendURL+email).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      })
+    })
+
   }
 
 }

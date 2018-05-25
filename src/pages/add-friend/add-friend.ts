@@ -37,7 +37,10 @@ export class AddFriendPage {
   }
 
   addFriend(email: any) {
-    this.friendProvider.addFriend(email);
+    console.log("add friend.ts: " + email);
+    this.friendProvider.addFriend(email).then(data => {
+
+    })
   }
 
 }
