@@ -43,6 +43,7 @@
     <div *ngFor="let friend of onlineFriends">
         <ion-item  *ngIf="friend.online">
           <ion-icon start name="contact">{{friend.name}}</ion-icon>
+          <ion-card *ngIf="friend.checkedIn">Incheckad på: Truddelutten</ion-card>
         </ion-item>
     </div>
         <!--<ion-item-options side="right">-->
