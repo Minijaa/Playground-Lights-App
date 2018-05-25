@@ -45,10 +45,20 @@ export class GameInfoPage {
   gameStopped: boolean = false;
   showToggle: boolean = true;
   difficulty: string;
+  ruleRow: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public gameProvider: GameProvider) {
-    this.game = navParams.get('game')
+    this.game = navParams.get('game');
     this.difficulty = "medium";
+
+    if (this.game.name === 'runhere') {
+      document.documentElement.style.setProperty('--ruleColor', 'aliceblue');
+    } else if (this.game.name === 'redlamp') {
+      document.documentElement.style.setProperty('--ruleColor', '#FDF8FF');
+      //document.documentElement.style.setProperty('--startStopHeight', '20px');
+    } else {
+      document.documentElement.style.setProperty('--ruleColor','#e6ecec' );
+    } //'#eafaea'
     // if (this.game.name === "redlamp"){
     //   document.getElementById('sas').setAttribute("class", "startandstop2");
     //   console.log("redllllight");
@@ -80,7 +90,7 @@ export class GameInfoPage {
   }
 
   resetTimer() {
-    if (this.game.name === "redlamp"){
+    if (this.game.name === "redlamp") {
       this.gameProvider.startGame(this.game.name);
       return;
     }
@@ -90,7 +100,7 @@ export class GameInfoPage {
   }
 
   startTimer() {
-    if (this.game.name === "redlamp"){
+    if (this.game.name === "redlamp") {
       this.gameProvider.startGame(this.game.name);
       return;
     }
@@ -123,7 +133,7 @@ export class GameInfoPage {
   getOverlayStyle() {
     let isSemi = this.semicircle;
     let transform = (isSemi ? '' : 'translateY(-50%) ') + 'translateX(-50%)';
-    if (this.game.name === "redlamp"){
+    if (this.game.name === "redlamp") {
 
       return {
         'top': isSemi ? '0' : '0%',
@@ -153,15 +163,15 @@ export class GameInfoPage {
     console.log(this.difficulty);
   }
 
-  getButtonColors(){
-    if (this.game.name === 'runhere'){
-      return "light";
-    }else if(this.game.name === 'danger'){
+  getButtonColors() {
+    if (this.game.name === 'runhere') {
       return "primary";
-    }else return "secondary";
+    } else if (this.game.name === 'danger') {
+      return "light";
+    } else return "secondary";
   }
 
-  getRules(){
+  getRules() {
     var htmlstring = this.game.rules.replace(/(\r\n|\n|\r)/gm, '"\n"');
     return htmlstring;
 
@@ -169,17 +179,21 @@ export class GameInfoPage {
   }
 
   getStart() {
-    if (this.game.name === "redlamp"){
+    if (this.game.name === "redlamp") {
       return "Grön!";
     }
     return "Start";
   }
 
-  getStop(){
-    if (this.game.name === "redlamp"){
+  getStop() {
+    if (this.game.name === "redlamp") {
       return "Röd!";
-    }else {
+    } else {
       return "Stopp"
     }
+  }
+
+  getDisabled() {
+    return this.game.name === "redlamp";
   }
 }
