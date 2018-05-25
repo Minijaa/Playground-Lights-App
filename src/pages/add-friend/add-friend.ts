@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {FriendProvider} from "../../providers/friend/friend";
 
 /**
  * Generated class for the AddFriendPage page.
@@ -15,11 +16,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AddFriendPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  searchQuery: string = '';
+  results: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public friendProvider : FriendProvider) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddFriendPage');
+  }
+
+  getItems(ev: any){
+    console.log("search: " + ev.target.value);
+    let searchPhrase = ev.target.value;
+    this.friendProvider.searchFriends(searchPhrase).then(data => {
+      this.results = data;
+    })
+
+    console.log("Results " + this.results);
+  }
+
+  addFriend(email: any) {
+    this.friendProvider.addFriend(email);
   }
 
 }

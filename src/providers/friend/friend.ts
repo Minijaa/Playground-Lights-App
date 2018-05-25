@@ -15,9 +15,20 @@ export class FriendProvider {
   onlineFriends = this.apiUrl + '/online?email=';
   offlineFriends = this.apiUrl + '/offline?email=';
   testURL: string = 'http://localhost:8080/db/getFriends?email=samuel@slk.se';
+  search = this.apiUrl + '/search?name=';
+  addFriendURL = this.apiUrl + '/addFriend?emailOne=samuel@slk.se&emailTwo='
 
   constructor(public http: HttpClient) {
     console.log('Hello FriendProvider Provider');
+  }
+
+  searchFriends(name) {
+    return new Promise (resolve => {
+      this.http.get(this.search + name).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      })
+    })
   }
 
   getFriends(email){
@@ -41,6 +52,11 @@ export class FriendProvider {
         console.log(err);
       });
     });
+  }
+
+  addFriend(email){
+    this.http.get(this.addFriendURL+email);
+    console.log(this.addFriendURL+email);
   }
 
 }
