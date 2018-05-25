@@ -18,7 +18,7 @@
   <ion-searchbar (ionInput)="getItems($event)" [showCancelButton]="shouldShowCancel">></ion-searchbar>
   <ion-list>
     <ion-item *ngFor="let result of results" >
-      <ion-icon start name="contact">{{result.name}}</ion-icon>
+      <ion-icon start name="contact">{{result.name}}</ion-icon><br>
       <button ion-button (click)="addFriend(result.email)">Lägg till vän</button>
     </ion-item>
   </ion-list>
