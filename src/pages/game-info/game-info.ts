@@ -51,13 +51,16 @@ export class GameInfoPage {
     this.game = navParams.get('game');
     this.difficulty = "medium";
 
+    //Bestäm färg på rule-cards och bestäm position för Start-knapp beroende på lek.
     if (this.game.name === 'runhere') {
       document.documentElement.style.setProperty('--ruleColor', 'aliceblue');
+      document.documentElement.style.setProperty('--startStopHeightPadding', '90px');
     } else if (this.game.name === 'redlamp') {
       document.documentElement.style.setProperty('--ruleColor', '#FDF8FF');
-      //document.documentElement.style.setProperty('--startStopHeight', '20px');
+      document.documentElement.style.setProperty('--startStopHeightPadding', '20px');
     } else {
       document.documentElement.style.setProperty('--ruleColor','#e6ecec' );
+      document.documentElement.style.setProperty('--startStopHeightPadding', '90px');
     } //'#eafaea'
     // if (this.game.name === "redlamp"){
     //   document.getElementById('sas').setAttribute("class", "startandstop2");

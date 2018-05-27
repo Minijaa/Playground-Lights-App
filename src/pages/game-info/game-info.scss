@@ -1,6 +1,6 @@
 :root {
   --ruleColor: aliceblue;
-  --StartStopHeight :10px;
+  --startStopHeightPadding :90px;
   /* @reasonCode green */
 }
 page-game-info {
@@ -23,7 +23,7 @@ page-game-info {
     border: none;
     color: white;
     padding: 20px;
-    padding-top: 90px;
+    padding-top: var(--startStopHeightPadding);//90px;
     height: 152px;
     width:152px;
     text-align: center;
