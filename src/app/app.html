@@ -24,11 +24,11 @@
 
                 <ion-item id="text-box">
                   <h5><b><font face="MV Boli">Fullständigt namn:</font></b></h5>
-                  <h6><font face="MV Bolig">Mattias Lundborg</font></h6>
+                  <h6><font face="MV Bolig">Samuel H</font></h6>
                   <h5><b><font face="MV Boli">E-post adress:</font></b></h5>
-                  <h6><font face="MV Boli">mattias.lundborg@hotmail.se</font></h6>
+                  <h6><font face="MV Boli">samuel@slk.se</font></h6>
                   <h5><b><font face="MV Boli">Du är incheckad i:</font></b></h5>
-                  <h6><font face="MV Boli">Vasaparken</font></h6>
+                  <h6><font face="MV Boli">L70</font></h6>
                 </ion-item>
 
 
@@ -37,16 +37,22 @@
                 <ion-toggle disabled="false"></ion-toggle>
                 </ion-item>
 
+
+
               </ion-list>
 
+
         </form>
+
+        <button id="roundedProfile" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+
       </div>
     </ion-list>
   <ion-footer>
     <ion-list>
-     <button id="roundedProfile" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-       {{p.title}}
-     </button>
+
     </ion-list>
   </ion-footer>
 
