@@ -155,7 +155,8 @@ export class MapPage {
 
   centerOnPosition(){
     this.closeInfoBox()
-    this.map.panTo(new google.maps.LatLng(59.407126, 17.946450));
+    this.map.setZoom(15);
+    this.map.panTo(new google.maps.LatLng(59.407150, 17.946250));
   }
   openInfoBox() {
     if(!this.infoBoxOpened) {
@@ -249,7 +250,7 @@ export class MapPage {
 
   createParks() {
 
-    let park = new Park(this.visitorProvider)
+/*    let park = new Park(this.visitorProvider)
     park.position = new google.maps.LatLng(59.407126, 17.946450);
     park.name = "L70"
     park.id = "l70dsvsu";
@@ -262,7 +263,7 @@ export class MapPage {
     park.address = "Borgarfjordsgatan 12"
     park.postal = "164 55 Kista"
     park.phone = "08-599 004 33"
-    this.pGrounds.push(park)
+    this.pGrounds.push(park)*/
 
     console.log("start")
     for (var i = 0/*272*/; i < /*300*/this.playgrounds.length; i++) {
@@ -346,10 +347,13 @@ class Park {
 
   checkForFriends(){
     this.friendNames.length = 0;
-    if(this.id == "a091564e-b6d1-43fa-abfb-b1f8b400b0ff"){
+    if(this.id == "0d6051fd-afe9-44cf-986d-8e11c240f823"){
+      this.friendNames.push("Emelie Karlsson")
+      this.friendNames.push("Oscar Westin")
+      this.friendNames.push("Wilma Edberg")
+    }
+    if(this.id == "3ebc12ad-7c94-4174-b82e-3257f9d06850"){
       this.friendNames.push("Charlotte Rosberg")
-      this.friendNames.push("Jesper Widlund")
-      this.friendNames.push("Sara Ahlin")
     }
   }
 

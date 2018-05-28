@@ -31,7 +31,7 @@
                  [showCancelButton]="shouldShowCancel"
                  (ionInput)="getSearchItems($event)">
   </ion-searchbar>
-    <div id="searchBox" [hidden]=true ><ion-list id ="searchList">
+    <div id="searchBox" [hidden]=true><ion-list id ="searchList">
       <ion-item *ngFor="let parkName of searchedParks" (click)="centerSearchedPark(parkName)" id="searchItem">
         {{parkName}}
       </ion-item>
@@ -39,7 +39,7 @@
     </div>
   </div>
 
- <div class="centerBox" id="centerBox"><button ion-button (click)="centerOnPosition()"><ion-icon name="locate"></ion-icon></button></div> <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}" (click)="openModal({test: openPlayground})"></div>
+ <div class="centerBox" id="centerBox"><img class="centerIcon" src="assets/imgs/CurrentPos.png" (click)="centerOnPosition()"></div> <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}" (click)="openModal({test: openPlayground})"></div>
   <div class="contentBox" id="textBox" hidden=true>
     <div class="parkTitle">
       {{openPlayground.name}}
