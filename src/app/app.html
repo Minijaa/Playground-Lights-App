@@ -1,6 +1,6 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar class="masters">
+    <ion-toolbar class="masters" color="primary">
       <ion-title>Din profil</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -9,19 +9,20 @@
     <ion-list>
       <ion-row class="logo-row">
 
-          <ion-col width-67>
-            <img class="profilePicture" src="assets/imgs/games_icon_run_blue.png">
-          </ion-col>
+
 
       </ion-row>
 
       <div class="profile-box" id="container">
         <form #profileForm="ngForm" autocomplete="off">
-          <ion-row>
-            <ion-col>
+
               <ion-list inset>
 
-                <ion-item id="profileInfo">
+                <ion-col width-67>
+                  <img class="profilePicture" src="assets/imgs/user_profile_picture.png">
+                </ion-col>
+
+                <ion-item id="text-box">
                   <h5><b><font face="MV Boli">Fullständigt namn:</font></b></h5>
                   <h6><font face="MV Bolig">Mattias Lundborg</font></h6>
                   <h5><b><font face="MV Boli">E-post adress:</font></b></h5>
@@ -30,9 +31,13 @@
                   <h6><font face="MV Boli">Vasaparken</font></h6>
                 </ion-item>
 
+
+                <ion-item id="toggle-box">
+                <ion-label>Visa din plats</ion-label>
+                <ion-toggle disabled="false"></ion-toggle>
+                </ion-item>
+
               </ion-list>
-            </ion-col>
-          </ion-row>
 
         </form>
       </div>

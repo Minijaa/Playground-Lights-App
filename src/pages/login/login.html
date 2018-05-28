@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -14,7 +14,7 @@
 
     <ion-col></ion-col>
     <ion-col width-67>
-      <img class="loginPicture" src="assets/imgs/app_icon_3_ballons_blue.jpg">
+      <img class="loginPicture" src="assets/imgs/app_icon_transparent_noOutline.png">
 
     </ion-col>
     <ion-col></ion-col>
@@ -66,12 +66,12 @@
       <ion-row>
 
           <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-          <button ion-button round full id="buttons" color="light" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" (click)="login()">Logga in</button>
+          <button ion-button round full id="buttons" color="primary" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid" (click)="login()">Logga in</button>
 
       </ion-row>
     </form>
 
-      <button ion-button round full id="buttons" color="primary" (click)="loginWithFB()">Logga in med Facebook</button>
+      <button ion-button round full id="buttons" color="light" (click)="loginWithFB()">Logga in med Facebook</button>
 
     <ion-col>
     </ion-col>
