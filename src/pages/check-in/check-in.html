@@ -42,7 +42,7 @@
 
       <!--<ion-item-sliding #item>-->
     <div *ngFor="let friend of friends">
-        <ion-item  *ngIf="friend.online">
+        <ion-item  *ngIf="friend.online" (click)="goToPark({string: friend.checkedInPlayground})">
           <ion-icon start name="contact"> {{friend.name}}</ion-icon><br>
           <ion-badge color="light-green" *ngIf="friend.checkedIn">Incheckad på: {{friend.checkedInPlayground}}</ion-badge>
         </ion-item>

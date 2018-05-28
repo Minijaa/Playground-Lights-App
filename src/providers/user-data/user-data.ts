@@ -15,6 +15,7 @@ export class UserDataProvider {
 
   private username: string;
   private mail: string;
+  private friendPark: string;
 
   constructor() {
     console.log('Hello UserDataProvider Provider');
@@ -30,6 +31,10 @@ export class UserDataProvider {
     this.mail = email;
   }
 
+  setPark(park){
+    this.friendPark = park;
+  }
+
   getUsername(){
     return this.username;
   }
@@ -38,4 +43,10 @@ export class UserDataProvider {
     return this.mail;
   }
 
+  getPark(){
+    var tempPark = this.friendPark;
+    this.friendPark = "";
+    console.log(tempPark)
+    return tempPark;
+  }
 }

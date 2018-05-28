@@ -174,6 +174,15 @@ export class MapPage {
     }
   }
 
+  ionViewDidEnter(){
+    var temppark = this.userData.getPark();
+    for (var i = 0; i < this.pGrounds.length; i++) {
+      if(this.pGrounds[i].name == temppark){
+        this.pGrounds[i].setActive();
+      }
+    }
+  }
+
   closeInfoBox() {
     if(this.infoBoxOpened) {
       document.getElementById('textBox').hidden = true;
