@@ -33,17 +33,17 @@
 <ion-content>
   <ion-list>
 
-    <ion-list-header color="primary">
+    <ion-list-header color="light-green">
       <h3>Online</h3>
     </ion-list-header>
 
     <!--Här börjar koden för att lista vänner, det måste inte vara ett ion-card-->
 
       <!--<ion-item-sliding #item>-->
-    <div *ngFor="let friend of onlineFriends">
+    <div *ngFor="let friend of friends">
         <ion-item  *ngIf="friend.online">
-          <ion-icon start name="contact">{{friend.name}}</ion-icon>
-          <ion-card *ngIf="friend.checkedIn">Incheckad på: Truddelutten</ion-card>
+          <ion-icon start name="contact"> {{friend.name}}</ion-icon><br>
+          <ion-badge color="light-green" *ngIf="friend.checkedIn">Incheckad på: Truddelutten</ion-badge>
         </ion-item>
     </div>
         <!--<ion-item-options side="right">-->
@@ -53,15 +53,15 @@
 
     <!--Här slutar koden för att lista vänner-->
 
-    <ion-list-header color="danger">
+    <ion-list-header color="light">
       <H3>Offline</H3>
     </ion-list-header>
 
 
       <!--<ion-item-sliding #item>-->
-    <div *ngFor="let friend of onlineFriends">
+    <div *ngFor="let friend of friends">
       <ion-item  *ngIf="!friend.online">
-        <ion-icon start name="contact">{{friend.name}}</ion-icon>
+        <ion-icon start name="contact"> {{friend.name}}</ion-icon>
       </ion-item>
     </div>
         <!--<ion-item-options side="right">-->

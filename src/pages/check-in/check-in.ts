@@ -19,7 +19,7 @@ import {FriendProvider} from "../../providers/friend/friend";
 })
 export class CheckInPage {
 
-  onlineFriends : any;
+  friends : any;
 
   constructor(public navCtrl: NavController, public friendProvider: FriendProvider) {
 
@@ -29,14 +29,17 @@ export class CheckInPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CheckInPage');
+
+  }
+  ionViewDidEnter(){
     this.testGetFriends();
   }
 
   getOnlineUsers(){
-    this.friendProvider.getOnlineFriends("sven@sven.com")
+    this.friendProvider.getFriends("samuel@slk.se")
       .then(data => {
-        this.onlineFriends = data;
-        console.log(this.onlineFriends);
+        this.friends = data;
+        console.log(this.friends);
       });
   }
 
@@ -46,8 +49,8 @@ export class CheckInPage {
     console.log("Started testGetFriends");
     this.friendProvider.testGetFriends()
       .then(data => {
-        this.onlineFriends = data;
-        console.log(this.onlineFriends);
+        this.friends = data;
+        console.log(this.friends);
       });
   }
 
