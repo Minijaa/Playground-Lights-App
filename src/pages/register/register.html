@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="light">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -56,16 +56,17 @@
     </ion-list>
     <ion-row>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-      <button ion-button round full id="buttons" color="light" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>
+      <button ion-button round full id="buttons" color="primary" class="submit-btn" full type="submit" [disabled]="!loginForm.form.valid"(click)="createAcc()">Skapa konto</button>
     </ion-row>
 
   </form>
 
   </div>
 
-    <img id="registerPage1" src="assets/imgs/games_icon_run_blue.png">
-  <img id="registerPage3" src="assets/imgs/games_icon_lamp_blue.png">
-    <img id="registerPage2" src="assets/imgs/games_icon_red_blue.png">
+    <img id="registerPage1" src="assets/imgs/icon_clouds.png">
+    <img id="registerPage2" src="assets/imgs/icon_clouds.png">
+
+
 
 
 
