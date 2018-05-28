@@ -44,7 +44,7 @@
     <div *ngFor="let friend of friends">
         <ion-item  *ngIf="friend.online">
           <ion-icon start name="contact"> {{friend.name}}</ion-icon><br>
-          <ion-badge color="light-green" *ngIf="friend.checkedIn">Incheckad på: Truddelutten</ion-badge>
+          <ion-badge color="light-green" *ngIf="friend.checkedIn">Incheckad på: {{friend.checkedInPlayground}}</ion-badge>
         </ion-item>
     </div>
         <!--<ion-item-options side="right">-->
