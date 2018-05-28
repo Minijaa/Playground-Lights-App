@@ -160,6 +160,10 @@ export class MapModalPage {
   }
 
   ionViewDidLoad(){
+    console.log(this.park.friendNames.length)
+    if(this.park.friendNames.length > 0){
+      document.getElementById('friends').hidden = false;
+    }
     setTimeout(() => {
       //this.name.setFocus();
     }, 150);

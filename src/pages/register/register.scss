@@ -2,7 +2,7 @@ page-register {
 
 
   .masters{
-    background-color: #c2eee7;
+    background-color: #006ebf;
 
   }
 
@@ -21,13 +21,13 @@ page-register {
 
   #container {
 
-    background-color: #ffc89f;
+    background-color: #c2eee7;
     margin-left:auto;
     margin-right: auto;
     width: 95%;
     height: 320px;
     -moz-border-radius: 100px;
-    -webkit-border-radius: 20px;
+    -webkit-border-radius: 10px;
 
 
   }
@@ -46,5 +46,49 @@ page-register {
     color: white;
 
   }
+
+  #registerPage1 {
+
+    height: 120px;
+    width: 90px;
+    margin-right: 300px;
+    margin-top: 50px;
+    margin-left: 120px;
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 15px;
+
+
+  }
+
+  #registerPage2 {
+
+    height: 120px;
+    width: 90px;
+    margin-right: 300px;
+    margin-top: -140px;
+    margin-left: 3px;
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 15px;
+
+
+  }
+
+  #registerPage3 {
+
+    height: 120px;
+    width: 90px;
+    margin-right: 300px;
+    margin-top: -100px;
+    margin-left: 230px;
+
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 15px;
+
+
+  }
+
+
 
 }

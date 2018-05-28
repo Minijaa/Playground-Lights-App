@@ -2,13 +2,19 @@ page-login {
 
 
   .masters{
-    background-color: #c2eee7;
+    background-color: #006ebf;
+
+  }
+
+  .loginPicture {
+
+    height: 210px;
 
   }
 
   #rounded {
 
-    outline-color: #c2eee7;
+    outline-color: #ffc89f;
     outline-width: 10px;
     color: #black;
     width: 100%;
@@ -23,13 +29,13 @@ page-login {
 
   #container {
 
-    background-color: #ffc89f;
+    background-color: #c2eee7;
     margin-left:auto;
     margin-right: auto;
     width: 95%;
     height: 320px;
     -moz-border-radius: 100px;
-    -webkit-border-radius: 20px;
+    -webkit-border-radius: 10px;
 
 
   }

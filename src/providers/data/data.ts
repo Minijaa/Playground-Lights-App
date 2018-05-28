@@ -13,6 +13,7 @@ export class DataProvider {
 
   //apiUrl = 'http://10.200.39.140:8080/list';
   apiUrl = 'http://localhost:8080/list';
+  //apiUrl = 'http://192.168.1.5:8080/list';
   //apiUrl = 'https://jsonplaceholder.typicode.com';
 
   constructor(public http: HttpClient) {

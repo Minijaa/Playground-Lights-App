@@ -6,6 +6,8 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {Map} from "rxjs/util/Map";
 import {MapModalPage} from "./map-modal";
 import {VisitorProvider} from "../../providers/visitor/visitor";
+import {UserDataProvider} from "../../providers/user-data/user-data";
+import {FriendProvider} from "../../providers/friend/friend";
 
 declare var google;
 
@@ -37,6 +39,9 @@ export class MapPage {
   allParkNames: string[] = [];
   amountofParksOnMap: number = 0;
   allParksLoaded: boolean = false;
+  /*userEmail: string;
+  friends: any;
+  friendsAtParks: any[] = [];*/
 
   addParkNo(){
     this.amountofParksOnMap++;
@@ -82,7 +87,7 @@ export class MapPage {
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public mapProvider: MapProvider, public coordHandler: CoordinateHandler, public events: Events,
-              private zone: NgZone, public modalCtrl: ModalController, public visitorProvider: VisitorProvider, public toastCtrl: ToastController) {
+              private zone: NgZone, public modalCtrl: ModalController, public visitorProvider: VisitorProvider, public toastCtrl: ToastController, public userData: UserDataProvider, public friendProvider: FriendProvider) {
     this.getPlaygrounds()
     this.events.subscribe('updateScreen', () => {
       this.zone.run(() => {
@@ -97,25 +102,69 @@ export class MapPage {
     var page = this;
     console.log('ionViewDidLoad MapPage');
     this.loadMap();
+    /*page.userEmail = page.userData.getEmail()*/
     setInterval(function () {
-        page.updateIcons()
+      page.updateIcons()
       }, 60000
     )
-
-
   }
+
+ /* updateFriends(){
+    console.log("kommer inte hit updateFriends1")
+    var page = this;
+    this.friendProvider.testGetFriends()
+      .then(data => {
+        page.friendsAtParks.length = 0;
+        page.friends = data;
+        console.log(page.friends)
+        console.log(page.friends.length)
+        for (var i = 0; i < page.friends.length; i++) {
+          console.log(page.friends[i])
+          if (page.friends[i].checkedIn == true){
+            page.friendsAtParks.push(page.friends[i])
+            console.log(page.friendsAtParks)
+          }
+        }
+        console.log(page.friendsAtParks)
+        console.log("kommer inte hit updateFriends slut")
+        page.updateIcons()
+         this.populateMap();
+      });
+  }*/
 
   updateIcons() {
     for (var i = 0; i < this.pGrounds.length; i++) {
+     /* var friendsAtThisPark = []
+      console.log("kommer inte hit2")
+      for (var j = 0; j < this.friendsAtParks.length; j++){
+        console.log(this.friendsAtParks[j].checkedInPlayground)
+        console.log(this.pGrounds[i].Id)
+        if (this.friendsAtParks[j].checkedInPlayground == this.pGrounds[i].Id){
+          console.log("FSAFPIJASFIPJ")
+          console.log(this.friendsAtParks[j].checkedInPlayground)
+          console.log(this.pGrounds[i].Id)
+          friendsAtThisPark.push(this.friendsAtParks[j])
+        }
+
+      }*/
+/*      console.log(friendsAtThisPark)*/
       this.pGrounds[i].getVisitor();
     }
 
   }
+
+  centerOnPosition(){
+    this.closeInfoBox()
+    this.map.panTo(new google.maps.LatLng(59.407126, 17.946450));
+  }
   openInfoBox() {
     if(!this.infoBoxOpened) {
       document.getElementById('textBox').hidden = false;
-      document.getElementById('map').style.height = "80%";
+      document.getElementById('map').style.height = "77%";
+      document.getElementById('centerBox').style.bottom = "23%";
+      console.log("bottom 23")
       this.infoBoxOpened = true;
+
     }
     if(this.openPlayground.image != null){
       document.getElementById('imgBox').hidden = false;
@@ -123,19 +172,26 @@ export class MapPage {
       document.getElementById('imgBox').hidden = true;
     }
   }
+
   closeInfoBox() {
     if(this.infoBoxOpened) {
       document.getElementById('textBox').hidden = true;
       document.getElementById('imgBox').hidden = true;
       document.getElementById('map').style.height = "100%";
+      document.getElementById('centerBox').style.bottom = "0";
+      console.log("bottom 0")
       this.infoBoxOpened = false;
       this.openPlayground = new Park(this.visitorProvider);
     }
     this.refreshData();
   }
 
+
+
+
   loadMap() {
-    let latLng = new google.maps.LatLng(59.4072096, 17.9460351);
+
+    let latLng = new google.maps.LatLng(59.407126, 17.946450);
     let myStyles =[
       {
         featureType: "poi",
@@ -155,11 +211,26 @@ export class MapPage {
     }
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
     this.map.MapPage = this;
+    var positionCircle = new google.maps.Circle({
+      strokeColor: '#0000FF',
+      strokeOpacity: 0.7,
+      strokeWeight: 2,
+      fillColor: '#0000FF',
+      fillOpacity: 0.30,
+      map: this.map,
+      center: new google.maps.LatLng(59.407150, 17.946250),
+      radius: 40,
+    });
+
     this.map.addListener("click", (function () {
       this.MapPage.closeInfoBox();
       document.getElementById('searchInput').hidden = true
-      document.getElementById('searchInput').hidden = false
       document.getElementById('searchBox').hidden = true
+      setTimeout(function () {
+        document.getElementById('searchInput').hidden = false
+      }, 1);
+
+
     }))
   }
 
@@ -177,6 +248,22 @@ export class MapPage {
   }
 
   createParks() {
+
+    let park = new Park(this.visitorProvider)
+    park.position = new google.maps.LatLng(59.407126, 17.946450);
+    park.name = "L70"
+    park.id = "l70dsvsu";
+    park.page = this;
+    park.getVisitor();
+    park.area = "Rinkeby-Kista";
+    park.imgHidden = false;
+    park.image = "assets/imgs/l70.png";
+    park.content = "L70 på DSV"
+    park.address = "Borgarfjordsgatan 12"
+    park.postal = "164 55 Kista"
+    park.phone = "08-599 004 33"
+    this.pGrounds.push(park)
+
     console.log("start")
     for (var i = 0/*272*/; i < /*300*/this.playgrounds.length; i++) {
       let park = new Park(this.visitorProvider)
@@ -235,7 +322,7 @@ export class MapPage {
 class Park {
   constructor(public visitorProvider: VisitorProvider) {
   }
-
+  readonly markerPurple: string = "http://maps.google.com/mapfiles/ms/icons/purple-dot.png"
   readonly markerBlue: string = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
   readonly markerRed: string = "http://maps.google.com/mapfiles/ms/icons/red-dot.png"
   readonly markerYellow: string = "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
@@ -255,9 +342,22 @@ class Park {
   postal: any;
   imgHidden: boolean = true;
   phone: string;
+  friendNames: string[] = [];
+
+  checkForFriends(){
+    this.friendNames.length = 0;
+    if(this.id == "a091564e-b6d1-43fa-abfb-b1f8b400b0ff"){
+      this.friendNames.push("Charlotte Rosberg")
+      this.friendNames.push("Jesper Widlund")
+      this.friendNames.push("Sara Ahlin")
+    }
+  }
 
   getPinIcon() {
-    if(this.visitors == null){
+    this.checkForFriends();
+    if(this.friendNames.length > 0){
+      return this.markerPurple
+    }else if(this.visitors == null){
       return this.markerBlue
     } else if(this.visitors < 25 && this.visitors >= 0) {
       return this.markerGreen
@@ -270,13 +370,21 @@ class Park {
     }
   }
 
-  getVisitor() {
+  getVisitor(){
+   /* if(friends =! undefined){
+      for (var i = 0; i < friends.length; i++){
+        this.friendNames.push(friends[i].name)
+      }
+    }*/
+/*    console.log(this.friendNames)*/
+
     this.visitorProvider.getVisitors(this.id)
       .then(data => {
         this.visitors = data;
         this.putOnMap(this.getPinIcon())
       });
   }
+
 
   setActive() {
     this.page.openPlayground = this;

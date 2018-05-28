@@ -15,6 +15,7 @@ export class VisitorProvider {
 
   //apiUrl = 'http://10.200.39.140:8080/sensors?parkid='
   apiUrl = 'http://localhost:8080/sensors?parkid='
+  /*apiUrl = 'http://192.168.1.5:8080/sensors?parkid='*/
 
   constructor(public http: HttpClient) {
     console.log('Hello VisitorProvider Provider');

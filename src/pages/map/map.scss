@@ -24,6 +24,7 @@ page-map {
    opacity: 0.9;
   }
   .contentBox {
+    margin-top: 10px;
     position: static;
 /*    bottom: 90px;*/
     z-index: 3;
@@ -33,10 +34,18 @@ page-map {
   .imageBox{
     position: absolute;
     /*left: 65vw;*/
-    bottom: 20%;
+    bottom: 23%;
     z-index: 3;
     width: 100vw;
     margin-right: 0;
+  }
+  .centerBox{
+    position: absolute;
+    /*left: 65vw;*/
+    bottom: 0;
+    z-index: 4;
+    margin-left: 0;
+    opacity: 0.8;
   }
 
 

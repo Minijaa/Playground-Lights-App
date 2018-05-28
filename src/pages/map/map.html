@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}" (click)="openModal({test: openPlayground})"></div>
+ <div class="centerBox" id="centerBox"><button ion-button (click)="centerOnPosition()"><ion-icon name="locate"></ion-icon></button></div> <div class ="imageBox" id="imgBox" [hidden]=true ><img id="img" class="image"  src="{{openPlayground.image}}" (click)="openModal({test: openPlayground})"></div>
   <div class="contentBox" id="textBox" hidden=true>
     <div class="parkTitle">
       {{openPlayground.name}}

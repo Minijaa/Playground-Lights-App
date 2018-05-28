@@ -9,18 +9,29 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class FriendProvider {
-
+  //ip = 'http://192.168.1.5:8080';
   ip = 'http://localhost:8080';
   apiUrl = this.ip + '/db';
   onlineFriends = this.apiUrl + '/online?email=';
   offlineFriends = this.apiUrl + '/offline?email=';
-  testURL: string = 'http://localhost:8080/db/getFriends?email=sven@sven.com';
+  testURL: string = 'http://localhost:8080/db/getFriends?email=samuel@slk.se';
+  search = this.apiUrl + '/search?name=';
+  addFriendURL = this.apiUrl + '/addFriend?emailOne=samuel@slk.se&emailTwo='
 
   constructor(public http: HttpClient) {
     console.log('Hello FriendProvider Provider');
   }
 
-  getOnlineFriends(email){
+  searchFriends(name) {
+    return new Promise (resolve => {
+      this.http.get(this.search + name).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      })
+    })
+  }
+
+  getFriends(email){
     return new Promise(resolve => {
       console.log(this.onlineFriends+email);
       this.http.get(this.onlineFriends+email).subscribe(data => {
@@ -41,6 +52,16 @@ export class FriendProvider {
         console.log(err);
       });
     });
+  }
+
+  addFriend(email){
+    return new Promise(resolve => {
+      this.http.get(this.addFriendURL+email).subscribe(data => {
+        resolve(data);
+        console.log(data);
+      })
+    })
+
   }
 
 }

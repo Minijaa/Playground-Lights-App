@@ -1,18 +1,50 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Meny</ion-title>
+    <ion-toolbar class="masters">
+      <ion-title>Din profil</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
+  <ion-content class="masters">
     <ion-list>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+      <ion-row class="logo-row">
+
+          <ion-col width-67>
+            <img class="profilePicture" src="assets/imgs/games_icon_run_blue.png">
+          </ion-col>
+
+      </ion-row>
+
+      <div class="profile-box" id="container">
+        <form #profileForm="ngForm" autocomplete="off">
+          <ion-row>
+            <ion-col>
+              <ion-list inset>
+
+                <ion-item id="profileInfo">
+                  <h5><b><font face="MV Boli">Fullständigt namn:</font></b></h5>
+                  <h6><font face="MV Bolig">Mattias Lundborg</font></h6>
+                  <h5><b><font face="MV Boli">E-post adress:</font></b></h5>
+                  <h6><font face="MV Boli">mattias.lundborg@hotmail.se</font></h6>
+                  <h5><b><font face="MV Boli">Du är incheckad i:</font></b></h5>
+                  <h6><font face="MV Boli">Vasaparken</font></h6>
+                </ion-item>
+
+              </ion-list>
+            </ion-col>
+          </ion-row>
+
+        </form>
+      </div>
     </ion-list>
-    <h2>{{username}}</h2>
-    <h2>{{mail}}</h2>
+  <ion-footer>
+    <ion-list>
+     <button id="roundedProfile" menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+       {{p.title}}
+     </button>
+    </ion-list>
+  </ion-footer>
+
   </ion-content>
 
 </ion-menu>
