@@ -11,6 +11,7 @@ import "rxjs/add/operator/map";
 @Injectable()
 export class AccountProvider {
   ip = "http://localhost:8080";
+  //ip = "http://192.168.1.5:8080";
   //ip = "http://10.200.39.140:8080";
 
   addUserName = this.ip+"/db/dbadd?name=";

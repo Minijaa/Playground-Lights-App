@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class FriendProvider {
-
+  //ip = 'http://192.168.1.5:8080';
   ip = 'http://localhost:8080';
   apiUrl = this.ip + '/db';
   onlineFriends = this.apiUrl + '/online?email=';

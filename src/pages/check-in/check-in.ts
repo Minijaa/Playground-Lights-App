@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {FriendRequestPage} from "../friend-request/friend-request";
 import {AddFriendPage} from "../add-friend/add-friend";
 import {FriendProvider} from "../../providers/friend/friend";
+import {MapPage} from "../map/map";
+import {UserDataProvider} from "../../providers/user-data/user-data";
 
 /**
  * Generated class for the CheckInPage page.
@@ -21,7 +23,7 @@ export class CheckInPage {
 
   friends : any;
 
-  constructor(public navCtrl: NavController, public friendProvider: FriendProvider) {
+  constructor(public navCtrl: NavController, public friendProvider: FriendProvider, public userData: UserDataProvider) {
 
   }
 
@@ -59,6 +61,20 @@ export class CheckInPage {
     this.navCtrl.push(AddFriendPage);
 
 
+  }
+
+  goToPark(park){
+    if(park.string != "") {
+      if(park.string == "Vasaparken"){
+        this.userData.setPark("Vasaparkens parklek")
+        console.log(park)
+        this.navCtrl.parent.select(0)
+      }else{
+        this.userData.setPark(park.string)
+        console.log(park)
+        this.navCtrl.parent.select(0)
+      }
+    }
   }
 
   openPageFriendRequest() {

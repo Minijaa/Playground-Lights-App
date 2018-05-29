@@ -24,6 +24,7 @@
         <ion-col></ion-col>
       </ion-row>
 
+
       <ion-item id="rounded">
         <ion-input placeholder="Fullständigt namn" name="username" type="text" required [(ngModel)]="username"></ion-input>
       </ion-item>
@@ -53,6 +54,10 @@
 -->
       </ion-item>
 
+      <ion-item id="rounded">
+        <ion-label>Jag har läst och <br>accepterar villkoren</ion-label>
+        <ion-checkbox color="dark" checked="false"(ionChange)="presentAlert()"></ion-checkbox>
+      </ion-item>
     </ion-list>
     <ion-row>
       <div *ngIf="error" class="alert alert-danger">{{error}}</div>
