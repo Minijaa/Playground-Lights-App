@@ -105,7 +105,7 @@ export class MapPage {
     /*page.userEmail = page.userData.getEmail()*/
     setInterval(function () {
       page.updateIcons()
-      }, 60000
+      }, 60000000
     )
   }
 
